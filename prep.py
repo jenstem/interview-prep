@@ -58,4 +58,8 @@ my_array = array('i', [1,2,3,4,5,6,7,8,9])
 
 # Get array buffer information through buffer_info() method
 
-print(my_array.buffer_info())
+# print(my_array.buffer_info())
+
+# Check for number of occurrences of an element using count() method
+
+print(my_array.count(8))
