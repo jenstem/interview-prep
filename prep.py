@@ -33,5 +33,15 @@ my_list = [10,11,12]
 
 # Add items from list into array using fromlist() method
 
-my_array.fromlist(my_list)
+# my_array.fromlist(my_list)
+# print(my_array)
+
+# Remove any array element using remove() method
+
+# my_array.remove(9)
+# print(my_array)
+
+# Remove last array element using pop() method
+
+my_array.pop()
 print(my_array)
