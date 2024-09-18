@@ -14,5 +14,10 @@ my_array = [1,2,3,4,5,6,7,8,9]
 
 # Append any value to the array using append() method
 
-my_array.append(10)
+# my_array.append(10)
+# print(my_array)
+
+# Insert value in an array using insert() method
+
+my_array.insert(9, 10)
 print(my_array)
