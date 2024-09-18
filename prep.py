@@ -2,8 +2,12 @@
 
 my_array = [1,2,3,4,5,6,7,8,9]
 
-def traverse_array():
-    for i in my_array:
-        print(i)
+# def traverse_array():
+#     for i in my_array:
+#         print(i)
 
-traverse_array()
+# traverse_array()
+
+
+# Access individual elements through indexes
+print(my_array[3])
