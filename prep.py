@@ -10,4 +10,9 @@ my_array = [1,2,3,4,5,6,7,8,9]
 
 
 # Access individual elements through indexes
-print(my_array[3])
+# print(my_array[3])
+
+# Append any value to the array using append() method
+
+my_array.append(10)
+print(my_array)
