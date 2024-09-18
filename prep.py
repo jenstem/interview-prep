@@ -4,7 +4,7 @@ from array import array
 
 my_array = array('i', [1,2,3,4,5,6,7,8,9])
 
-my_list = [10,11,12]
+# my_list = [10,11,12]
 
 # def traverse_array():
 #     for i in my_array:
@@ -43,5 +43,10 @@ my_list = [10,11,12]
 
 # Remove last array element using pop() method
 
-my_array.pop()
-print(my_array)
+# my_array.pop()
+# print(my_array)
+
+# Fetch any element through its index using index() method
+
+index = my_array.index(5)
+print("The index of 5 is:", index)
