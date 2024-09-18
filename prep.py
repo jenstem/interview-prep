@@ -53,5 +53,9 @@ my_array = array('i', [1,2,3,4,5,6,7,8,9])
 
 # Reverse a python array using reverse() method
 
-my_array.reverse()
-print(my_array)
+# my_array.reverse()
+# print(my_array)
+
+# Get array buffer information through buffer_info() method
+
+print(my_array.buffer_info())
