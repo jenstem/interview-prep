@@ -48,5 +48,10 @@ my_array = array('i', [1,2,3,4,5,6,7,8,9])
 
 # Fetch any element through its index using index() method
 
-index = my_array.index(5)
-print("The index of 5 is:", index)
+# index = my_array.index(5)
+# print("The index of 5 is:", index)
+
+# Reverse a python array using reverse() method
+
+my_array.reverse()
+print(my_array)
