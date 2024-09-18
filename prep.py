@@ -1,6 +1,10 @@
+from array import array
+
 # Create an array and traverse
 
-my_array = [1,2,3,4,5,6,7,8,9]
+my_array = array('i', [1,2,3,4,5,6,7,8,9])
+
+my_list = [10,11,12]
 
 # def traverse_array():
 #     for i in my_array:
@@ -19,5 +23,15 @@ my_array = [1,2,3,4,5,6,7,8,9]
 
 # Insert value in an array using insert() method
 
-my_array.insert(9, 10)
+# my_array.insert(9, 10)
+# print(my_array)
+
+# Extend python array using extend() method
+
+# my_array.extend([10,11,12])
+# print(my_array)
+
+# Add items from list into array using fromlist() method
+
+my_array.fromlist(my_list)
 print(my_array)
