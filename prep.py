@@ -1,8 +1,9 @@
 from array import array
+import numpy as np
 
 # Create an array and traverse
 
-my_array = array('i', [1,2,3,4,5,6,7,8,9])
+my_array = np.array('i', [1,2,3,4,5,6,7,8,9])
 
 # my_list = [10,11,12]
 
@@ -62,4 +63,9 @@ my_array = array('i', [1,2,3,4,5,6,7,8,9])
 
 # Check for number of occurrences of an element using count() method
 
-print(my_array.count(8))
+# print(my_array.count(8))
+
+# Convert array to string using str() method
+
+my_string = str(my_array)
+print(my_string)
