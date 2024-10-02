@@ -1,6 +1,6 @@
-my_array = [1,2,3,4,5,6,7,8,9,10]
+# Singly Linked List
 
-
-# Slice elements from an array
-
-print(my_array[:5])
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
