@@ -14,6 +14,8 @@ class SinglyLinkedList:
 
 
     def __str__(self):
+        if self.head is None:
+            return 'Empty List'
         temp_node = self.head
         result = ''
         while temp_node is not None:
