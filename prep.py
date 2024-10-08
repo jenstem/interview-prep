@@ -75,6 +75,17 @@ class SinglyLinkedList:
             current = current.next
 
 
+    def search(self, target):
+        current = self.head
+        index = 0
+        while current:
+            if current.value == target:
+                return index
+            current = current.next
+            index += 1
+        return
+
+
 new_linked_list = SinglyLinkedList()
 new_linked_list.append(10)
 new_linked_list.append(20)
