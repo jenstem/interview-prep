@@ -148,12 +148,33 @@ class SinglyLinkedList:
         return popped_node
 
 
+    def pop(self):
+        '''
+        Remove last element in the linked list
+        '''
+        if self.length == 0:
+            return None
+        popped_node = self.tail
+        if self.length == 1:
+            self.head = self.tail = None
+            return popped_node
+        else:
+            temp = self.head
+            while temp.next is not self.tail:
+                temp = temp.next
+            self.tail = temp
+            temp.next = None
+            self.length -= 1
+            return popped_node
+
+
 new_linked_list = SinglyLinkedList()
 new_linked_list.append(10)
 new_linked_list.append(20)
 new_linked_list.append(30)
 new_linked_list.append(40)
-print(new_linked_list.pop_first())
+print(new_linked_list.pop())
+# print(new_linked_list.pop_first())
 # print(new_linked_list.set_value(2, 50))
 # print(new_linked_list.get(2))
 # new_linked_list.prepend(50)
