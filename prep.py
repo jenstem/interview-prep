@@ -97,16 +97,27 @@ class SinglyLinkedList:
         return current.value
 
 
+    def set_value(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        current.value = value
+        return True
+
+
 new_linked_list = SinglyLinkedList()
 new_linked_list.append(10)
 new_linked_list.append(20)
 new_linked_list.append(30)
 new_linked_list.append(40)
-print(new_linked_list.get(2))
+print(new_linked_list.set_value(2, 50))
+# print(new_linked_list.get(2))
 # new_linked_list.prepend(50)
 # new_linked_list.insert(1,60)
 # new_linked_list.traverse()
 # print(new_linked_list.search(20))
 # print(new_linked_list.length)
 # print(new_linked_list.head.value)
-# print(new_linked_list)
+print(new_linked_list)
