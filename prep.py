@@ -14,6 +14,9 @@ class SinglyLinkedList:
 
 
     def __str__(self):
+        '''
+        Converts an instance of class into a string
+        '''
         if self.head is None:
             return 'Empty List'
         temp_node = self.head
@@ -27,6 +30,9 @@ class SinglyLinkedList:
 
 
     def append(self, value):
+        '''
+        Adds a new node to the end of the linked list
+        '''
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -38,6 +44,9 @@ class SinglyLinkedList:
 
 
     def prepend(self, value):
+        '''
+        Adds a new node to the beginning of the linked list
+        '''
         new_node = Node(value)
         if self.head is None:
             self.head = new_node
@@ -49,6 +58,9 @@ class SinglyLinkedList:
 
 
     def insert(self, index, value):
+        '''
+        Insert a new value at a specific index
+        '''
         new_node = Node(value)
         if index < 0 or index > self.length:
             return False
@@ -69,6 +81,9 @@ class SinglyLinkedList:
 
 
     def traverse(self):
+        '''
+        Traverse through the linked list
+        '''
         current = self.head
         while current is not None:
             print(current.value)
@@ -76,6 +91,9 @@ class SinglyLinkedList:
 
 
     def search(self, target):
+        '''
+        Check if the target value is in the linked list
+        '''
         current = self.head
         index = 0
         while current:
@@ -87,6 +105,9 @@ class SinglyLinkedList:
 
 
     def get(self, index):
+        '''
+        Retrieve an element at a specific index
+        '''
         if index == -1:
             return self.tail.value
         if index < 0 or index >= self.length:
@@ -98,6 +119,9 @@ class SinglyLinkedList:
 
 
     def set_value(self, index, value):
+        '''
+        Update the value of a node based on the index
+        '''
         if index < 0 or index >= self.length:
             return False
         current = self.head
@@ -107,12 +131,24 @@ class SinglyLinkedList:
         return True
 
 
+    def pop_first(self):
+        '''
+        Remove the first node in the linked list
+        '''
+        popped_node = self.head
+        self.head = self.head.next
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
+
+
 new_linked_list = SinglyLinkedList()
 new_linked_list.append(10)
 new_linked_list.append(20)
 new_linked_list.append(30)
 new_linked_list.append(40)
-print(new_linked_list.set_value(2, 50))
+print(new_linked_list.pop_first())
+# print(new_linked_list.set_value(2, 50))
 # print(new_linked_list.get(2))
 # new_linked_list.prepend(50)
 # new_linked_list.insert(1,60)
