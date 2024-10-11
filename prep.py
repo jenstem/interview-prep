@@ -188,6 +188,15 @@ class SinglyLinkedList:
         return popped_node
 
 
+    def delete_all(self):
+        '''
+        Delete all elements in the linked list
+        '''
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+
 
 new_linked_list = SinglyLinkedList()
 new_linked_list.append(10)
@@ -195,4 +204,4 @@ new_linked_list.append(20)
 new_linked_list.append(30)
 new_linked_list.append(40)
 print(new_linked_list.remove(1))
-print(new_linked_list)
+print(new_linked_list.delete_all())
