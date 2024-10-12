@@ -7,13 +7,26 @@ class Node:
 
 
 class CSLinkedList:
-    def __init__(self, value):
-        new_node = Node(value)
-        new_node.next = new_node
-        self.head = new_node
-        self.tail = new_node
-        self.length = 1
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
 
 
-cslinkedlist = CSLinkedList(10)
-print(cslinkedlist.head.value)
+    def __str__(self):
+        '''
+        Converts an instance of class into a string
+        '''
+        temp_node = self.head
+        result = ""
+        while temp_node:
+            result += str(temp_node.value)
+            temp_node = temp_node.next
+            if temp_node == self.head:
+                break
+            result += " -> "
+        return result
+
+
+cslinkedlist = CSLinkedList()
+print(cslinkedlist)
