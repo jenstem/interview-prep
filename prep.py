@@ -29,6 +29,9 @@ class CSLinkedList:
 
 
     def append(self, value):
+        '''
+        Adds a new node to the end of the linked list
+        '''
         new_node = Node(value)
         if self.length == 0:
             self.head = new_node
@@ -41,10 +44,28 @@ class CSLinkedList:
         self.length += 1
 
 
+    def prepend(self, value):
+        '''
+        Adds a new node to the beginning of the linked list
+        '''
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            new_node.next = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.tail.next = new_node
+        self.length += 1
+
+
+
+
 cslinkedlist = CSLinkedList()
 cslinkedlist.append(10)
 cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
-cslinkedlist.append(50)
+cslinkedlist.prepend(50)
 print(cslinkedlist)
