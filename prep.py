@@ -65,13 +65,28 @@ class CSLinkedList:
         Adds a new node at the specified position in the linked list
         '''
         new_node = Node(value)
-        temp_node = self.head
-        for _ in range(index - 1):
-            temp_node = temp_node.next
-        new_node.next = temp_node.next
-        temp_node.next = new_node
+        if index > self.length or index < 0:
+            raise Exception("Index out of range")
+        if index == 0:
+            if self.length == 0:
+                self.head = new_node
+                self.tail = new_node
+                new_node.next = new_node
+            else:
+                new_node.next = self.head
+                self.head = new_node
+                self.tail.next = new_node
+        elif index == self.length:
+            self.tail.next = new_node
+            new_node.next = self.head
+            self.tail = new_node
+        else:
+            temp_node = self.head
+            for _ in range(index - 1):
+                temp_node = temp_node.next
+            new_node.next = temp_node.next
+            temp_node.next = new_node
         self.length += 1
-
 
 
 
@@ -82,5 +97,7 @@ cslinkedlist.append(10)
 cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
-cslinkedlist.insert(2, 50)
+cslinkedlist.insert(0, 50)
+cslinkedlist.insert(5, 60)
 print(cslinkedlist)
+print(cslinkedlist.tail.value)
