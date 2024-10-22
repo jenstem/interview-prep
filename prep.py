@@ -60,6 +60,21 @@ class CSLinkedList:
         self.length += 1
 
 
+    def insert(self, index, value):
+        '''
+        Adds a new node at the specified position in the linked list
+        '''
+        new_node = Node(value)
+        temp_node = self.head
+        for _ in range(index - 1):
+            temp_node = temp_node.next
+        new_node.next = temp_node.next
+        temp_node.next = new_node
+        self.length += 1
+
+
+
+
 
 
 cslinkedlist = CSLinkedList()
@@ -67,5 +82,5 @@ cslinkedlist.append(10)
 cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
-cslinkedlist.prepend(50)
+cslinkedlist.insert(2, 50)
 print(cslinkedlist)
