@@ -89,6 +89,18 @@ class CSLinkedList:
         self.length += 1
 
 
+    def traverse(self):
+        '''
+        Iterates through the linked list
+        '''
+        current = self.head
+        while current is not None:
+            print(current.value)
+            current = current.next
+            if current == self.head:
+                break
+
+
 
 
 
@@ -98,6 +110,6 @@ cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.insert(0, 50)
-cslinkedlist.insert(5, 60)
+# cslinkedlist.insert(5, 60)
 print(cslinkedlist)
-print(cslinkedlist.tail.value)
+cslinkedlist.traverse()
