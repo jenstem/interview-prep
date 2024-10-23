@@ -101,6 +101,18 @@ class CSLinkedList:
                 break
 
 
+    def search(self, target):
+        '''
+        Search for a specific element in the linked list
+        '''
+        current = self.head
+        while current is not None:
+            if current.value == target:
+                return True
+            current = current.next
+            if current == self.head:
+                break
+        return False
 
 
 
@@ -110,6 +122,6 @@ cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.insert(0, 50)
-# cslinkedlist.insert(5, 60)
 print(cslinkedlist)
-cslinkedlist.traverse()
+print(cslinkedlist.search(50))
+print(cslinkedlist.search(60))
