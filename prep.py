@@ -136,6 +136,19 @@ class CSLinkedList:
         return current
 
 
+    def set_value(self, index, value):
+        '''
+        Set the value of the node at the specified index
+        '''
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+
+
+
 
 
 cslinkedlist = CSLinkedList()
@@ -145,4 +158,5 @@ cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.insert(0, 50)
 print(cslinkedlist)
-print(cslinkedlist.get(2))
+print(cslinkedlist.set_value(-1, 100))
+print(cslinkedlist.tail)
