@@ -6,6 +6,13 @@ class Node:
         self.next = None
 
 
+    def __str__(self):
+        '''
+        Turns the value of the node into a string
+        '''
+        return str(self.value)
+
+
 class CSLinkedList:
     def __init__(self):
         self.head = None
@@ -115,6 +122,21 @@ class CSLinkedList:
         return False
 
 
+    def get(self, index):
+        '''
+        Get the value of the node at the specified index
+        '''
+        if index == -1:
+            return self.tail
+        elif index < -1 or index >= self.length:
+            return None
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        return current
+
+
+
 
 cslinkedlist = CSLinkedList()
 cslinkedlist.append(10)
@@ -123,5 +145,4 @@ cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.insert(0, 50)
 print(cslinkedlist)
-print(cslinkedlist.search(50))
-print(cslinkedlist.search(60))
+print(cslinkedlist.get(2))
