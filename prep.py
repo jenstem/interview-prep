@@ -147,6 +147,25 @@ class CSLinkedList:
         return False
 
 
+    def pop_first(self):
+        '''
+        Remove the first node in the linked list
+        '''
+        popped_node = self.head
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.tail.next = self.head
+            popped_node.next = None
+        self.length -= 1
+        return popped_node
+
+
+
 
 
 
@@ -158,5 +177,5 @@ cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.insert(0, 50)
 print(cslinkedlist)
-print(cslinkedlist.set_value(-1, 100))
-print(cslinkedlist.tail)
+print(cslinkedlist.pop_first())
+print(cslinkedlist)
