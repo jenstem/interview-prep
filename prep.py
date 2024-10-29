@@ -203,6 +203,16 @@ class CSLinkedList:
         return popped_node
 
 
+    def delete_all(self):
+        '''
+        Deletes all the nodes in the linked list
+        '''
+        if self.length == 0:
+            return
+        self.tail.next = None
+        self.head = None
+        self.tail = None
+        self.length = 0
 
 
 
@@ -213,5 +223,5 @@ cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
 print(cslinkedlist)
-print(cslinkedlist.remove(1))
+print(cslinkedlist.delete_all())
 print(cslinkedlist)
