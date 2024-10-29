@@ -165,6 +165,27 @@ class CSLinkedList:
         return popped_node
 
 
+    def pop(self):
+        '''
+        Removes the last node in the linked list
+        '''
+        if self.length == 0:
+            return None
+        popped_node = self.tail
+        if self.length == 1:
+            self.head = self.tail = None
+        else:
+            temp = self.head
+            while temp.next is not self.tail:
+                temp = temp.next
+            temp.next = self.head
+            self.tail = temp
+            popped_node.next = None
+        self.length -= 1
+        return popped_node
+
+
+
 
 
 
@@ -175,7 +196,6 @@ cslinkedlist.append(10)
 cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
-cslinkedlist.insert(0, 50)
 print(cslinkedlist)
-print(cslinkedlist.pop_first())
+print(cslinkedlist.pop())
 print(cslinkedlist)
