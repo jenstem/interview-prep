@@ -185,6 +185,22 @@ class CSLinkedList:
         return popped_node
 
 
+    def remove(self, index):
+        '''
+        Removes a node at the specified index
+        '''
+        if index < 0 or index >= self.length:
+            return None
+        elif index == 0:
+            return self.pop_first()
+        elif index == self.length - 1:
+            return self.pop()
+        prev_node = self.get(index-1)
+        popped_node = prev_node.next
+        prev_node.next = popped_node.next
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
 
 
 
@@ -197,5 +213,5 @@ cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
 print(cslinkedlist)
-print(cslinkedlist.pop())
+print(cslinkedlist.remove(1))
 print(cslinkedlist)
