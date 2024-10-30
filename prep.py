@@ -264,11 +264,51 @@ class CSLinkedList:
         return count
 
 
+    def split_list(self):
+        '''
+        Splits the linked list into two equal halves
+        '''
+        if self.length == 0:
+            return None, None
+
+        mid = (self.length + 1) // 2
+        count = 1
+
+        first_list = CSLinkedList()
+        second_list = CSLinkedList()
+
+        current = self.head
+        last_first_list = None
+        while count <= mid:
+            first_list.append(current.value)
+            last_first_list = current
+            current = current.next
+            count += 1
+
+        if last_first_list:
+            first_list.tail = last_first_list
+            first_list.tail.next = first_list.head
+
+        while current != self.head:
+            second_list.append(current.value)
+            current = current.next
+
+        if second_list.length > 0:
+            second_list.tail = self.tail
+            second_list.tail.next = second_list.head
+
+        return first_list, second_list
+
+
+
+
 cslinkedlist = CSLinkedList()
 cslinkedlist.append(10)
 cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
+cslinkedlist.append(50)
+cslinkedlist.append(60)
 print(cslinkedlist)
-print(cslinkedlist.count_nodes())
+print(cslinkedlist.split_list())
 print(cslinkedlist)
