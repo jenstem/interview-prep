@@ -216,6 +216,9 @@ class CSLinkedList:
 
 
     def delete_by_value(self, value):
+            '''
+            Deletes a specific node in the linked list by value
+            '''
             if self.length == 0:
                 return False
 
@@ -247,6 +250,18 @@ class CSLinkedList:
             return False
 
 
+    def count_nodes(self):
+        '''
+        Counts the number of nodes in the linked list
+        '''
+        count = 0
+        temp = self.head
+        while temp:
+            count += 1
+            temp = temp.next
+            if temp == self.head:
+                break
+        return count
 
 
 cslinkedlist = CSLinkedList()
@@ -255,5 +270,5 @@ cslinkedlist.append(20)
 cslinkedlist.append(30)
 cslinkedlist.append(40)
 print(cslinkedlist)
-print(cslinkedlist.delete_by_value(30))
+print(cslinkedlist.count_nodes())
 print(cslinkedlist)
