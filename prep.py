@@ -1,303 +1,358 @@
-# Circular Singly Linked List
+# # Circular Singly Linked List
+
+# class Node:
+#     def __init__(self, value):
+#         self.value = value
+#         self.next = None
+
+
+#     def __str__(self):
+#         '''
+#         Turns the value of the node into a string
+#         '''
+#         return str(self.value)
+
+
+# class CSLinkedList:
+#     def __init__(self):
+#         self.head = None
+#         self.tail = None
+#         self.length = 0
+
+
+#     def __str__(self):
+#         '''
+#         Converts an instance of class into a string
+#         '''
+#         temp_node = self.head
+#         result = ""
+#         while temp_node:
+#             result += str(temp_node.value)
+#             temp_node = temp_node.next
+#             if temp_node == self.head:
+#                 break
+#             result += " -> "
+#         return result
+
+
+#     def append(self, value):
+#         '''
+#         Adds a new node to the end of the linked list
+#         '''
+#         new_node = Node(value)
+#         if self.length == 0:
+#             self.head = new_node
+#             self.tail = new_node
+#             new_node.next = new_node
+#         else:
+#             self.tail.next = new_node
+#             new_node.next = self.head
+#             self.tail = new_node
+#         self.length += 1
+
+
+#     def prepend(self, value):
+#         '''
+#         Adds a new node to the beginning of the linked list
+#         '''
+#         new_node = Node(value)
+#         if self.head is None:
+#             self.head = new_node
+#             self.tail = new_node
+#             new_node.next = new_node
+#         else:
+#             new_node.next = self.head
+#             self.head = new_node
+#             self.tail.next = new_node
+#         self.length += 1
+
+
+#     def insert(self, index, value):
+#         '''
+#         Adds a new node at the specified position in the linked list
+#         '''
+#         new_node = Node(value)
+#         if index > self.length or index < 0:
+#             raise Exception("Index out of range")
+#         if index == 0:
+#             if self.length == 0:
+#                 self.head = new_node
+#                 self.tail = new_node
+#                 new_node.next = new_node
+#             else:
+#                 new_node.next = self.head
+#                 self.head = new_node
+#                 self.tail.next = new_node
+#         elif index == self.length:
+#             self.tail.next = new_node
+#             new_node.next = self.head
+#             self.tail = new_node
+#         else:
+#             temp_node = self.head
+#             for _ in range(index - 1):
+#                 temp_node = temp_node.next
+#             new_node.next = temp_node.next
+#             temp_node.next = new_node
+#         self.length += 1
+
+
+#     def traverse(self):
+#         '''
+#         Iterates through the linked list
+#         '''
+#         current = self.head
+#         while current is not None:
+#             print(current.value)
+#             current = current.next
+#             if current == self.head:
+#                 break
+
+
+#     def search(self, target):
+#         '''
+#         Search for a specific element in the linked list
+#         '''
+#         current = self.head
+#         while current is not None:
+#             if current.value == target:
+#                 return True
+#             current = current.next
+#             if current == self.head:
+#                 break
+#         return False
+
+
+#     def get(self, index):
+#         '''
+#         Get the value of the node at the specified index
+#         '''
+#         if index == -1:
+#             return self.tail
+#         elif index < -1 or index >= self.length:
+#             return None
+#         current = self.head
+#         for _ in range(index):
+#             current = current.next
+#         return current
+
+
+#     def set_value(self, index, value):
+#         '''
+#         Set the value of the node at the specified index
+#         '''
+#         temp = self.get(index)
+#         if temp:
+#             temp.value = value
+#             return True
+#         return False
+
+
+#     def pop_first(self):
+#         '''
+#         Remove the first node in the linked list
+#         '''
+#         popped_node = self.head
+#         if self.length == 0:
+#             return None
+#         if self.length == 1:
+#             self.head = None
+#             self.tail = None
+#         else:
+#             self.head = self.head.next
+#             self.tail.next = self.head
+#             popped_node.next = None
+#         self.length -= 1
+#         return popped_node
+
+
+#     def pop(self):
+#         '''
+#         Removes the last node in the linked list
+#         '''
+#         if self.length == 0:
+#             return None
+#         popped_node = self.tail
+#         if self.length == 1:
+#             self.head = self.tail = None
+#         else:
+#             temp = self.head
+#             while temp.next is not self.tail:
+#                 temp = temp.next
+#             temp.next = self.head
+#             self.tail = temp
+#             popped_node.next = None
+#         self.length -= 1
+#         return popped_node
+
+
+#     def remove(self, index):
+#         '''
+#         Removes a node at the specified index
+#         '''
+#         if index < 0 or index >= self.length:
+#             return None
+#         elif index == 0:
+#             return self.pop_first()
+#         elif index == self.length - 1:
+#             return self.pop()
+#         prev_node = self.get(index-1)
+#         popped_node = prev_node.next
+#         prev_node.next = popped_node.next
+#         popped_node.next = None
+#         self.length -= 1
+#         return popped_node
+
+
+#     def delete_all(self):
+#         '''
+#         Deletes all the nodes in the linked list
+#         '''
+#         if self.length == 0:
+#             return
+#         self.tail.next = None
+#         self.head = None
+#         self.tail = None
+#         self.length = 0
+
+
+#     def delete_by_value(self, value):
+#             '''
+#             Deletes a specific node in the linked list by value
+#             '''
+#             if self.length == 0:
+#                 return False
+
+#             if self.head == self.tail and self.head.value == value:
+#                 self.head = None
+#                 self.tail = None
+#                 self.length = 0
+#                 return True
+
+#             prev = None
+#             current = self.head
+
+#             while True:
+#                 if current.value == value:
+#                     if current == self.head:
+#                         self.head = current.next
+#                         self.tail.next = self.head
+#                     else:
+#                         prev.next = current.next
+#                         if current == self.tail:
+#                             self.tail = prev
+#                     self.length -= 1
+#                     return True
+#                 prev = current
+#                 current = current.next
+#                 if current == self.head:
+#                     break
+
+#             return False
+
+
+#     def count_nodes(self):
+#         '''
+#         Counts the number of nodes in the linked list
+#         '''
+#         count = 0
+#         temp = self.head
+#         while temp:
+#             count += 1
+#             temp = temp.next
+#             if temp == self.head:
+#                 break
+#         return count
+
+
+#     def split_list(self):
+#         '''
+#         Splits the linked list into two equal halves
+#         '''
+#         if self.length == 0:
+#             return None, None
+
+#         mid = (self.length + 1) // 2
+#         count = 1
+
+#         first_list = CSLinkedList()
+#         second_list = CSLinkedList()
+
+#         current = self.head
+#         last_first_list = None
+#         while count <= mid:
+#             first_list.append(current.value)
+#             last_first_list = current
+#             current = current.next
+#             count += 1
+
+#         if last_first_list:
+#             first_list.tail = last_first_list
+#             first_list.tail.next = first_list.head
+
+#         while current != self.head:
+#             second_list.append(current.value)
+#             current = current.next
+
+#         if second_list.length > 0:
+#             second_list.tail = self.tail
+#             second_list.tail.next = second_list.head
+
+#         return first_list, second_list
 
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.next = None
-
-
-    def __str__(self):
-        '''
-        Turns the value of the node into a string
-        '''
-        return str(self.value)
 
 
 class CSLinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None
-        self.length = 0
 
 
-    def __str__(self):
-        '''
-        Converts an instance of class into a string
-        '''
-        temp_node = self.head
-        result = ""
-        while temp_node:
-            result += str(temp_node.value)
-            temp_node = temp_node.next
-            if temp_node == self.head:
-                break
-            result += " -> "
-        return result
-
-
-    def append(self, value):
+    def append(self, data):
         '''
         Adds a new node to the end of the linked list
         '''
-        new_node = Node(value)
-        if self.length == 0:
+        new_node = Node(data)
+        if not self.head:
             self.head = new_node
-            self.tail = new_node
-            new_node.next = new_node
-        else:
-            self.tail.next = new_node
-            new_node.next = self.head
-            self.tail = new_node
-        self.length += 1
-
-
-    def prepend(self, value):
-        '''
-        Adds a new node to the beginning of the linked list
-        '''
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
-            new_node.next = new_node
-        else:
-            new_node.next = self.head
-            self.head = new_node
-            self.tail.next = new_node
-        self.length += 1
-
-
-    def insert(self, index, value):
-        '''
-        Adds a new node at the specified position in the linked list
-        '''
-        new_node = Node(value)
-        if index > self.length or index < 0:
-            raise Exception("Index out of range")
-        if index == 0:
-            if self.length == 0:
-                self.head = new_node
-                self.tail = new_node
-                new_node.next = new_node
-            else:
-                new_node.next = self.head
-                self.head = new_node
-                self.tail.next = new_node
-        elif index == self.length:
-            self.tail.next = new_node
-            new_node.next = self.head
-            self.tail = new_node
-        else:
-            temp_node = self.head
-            for _ in range(index - 1):
-                temp_node = temp_node.next
-            new_node.next = temp_node.next
-            temp_node.next = new_node
-        self.length += 1
-
-
-    def traverse(self):
-        '''
-        Iterates through the linked list
-        '''
-        current = self.head
-        while current is not None:
-            print(current.value)
-            current = current.next
-            if current == self.head:
-                break
-
-
-    def search(self, target):
-        '''
-        Search for a specific element in the linked list
-        '''
-        current = self.head
-        while current is not None:
-            if current.value == target:
-                return True
-            current = current.next
-            if current == self.head:
-                break
-        return False
-
-
-    def get(self, index):
-        '''
-        Get the value of the node at the specified index
-        '''
-        if index == -1:
-            return self.tail
-        elif index < -1 or index >= self.length:
-            return None
-        current = self.head
-        for _ in range(index):
-            current = current.next
-        return current
-
-
-    def set_value(self, index, value):
-        '''
-        Set the value of the node at the specified index
-        '''
-        temp = self.get(index)
-        if temp:
-            temp.value = value
-            return True
-        return False
-
-
-    def pop_first(self):
-        '''
-        Remove the first node in the linked list
-        '''
-        popped_node = self.head
-        if self.length == 0:
-            return None
-        if self.length == 1:
-            self.head = None
-            self.tail = None
-        else:
-            self.head = self.head.next
-            self.tail.next = self.head
-            popped_node.next = None
-        self.length -= 1
-        return popped_node
-
-
-    def pop(self):
-        '''
-        Removes the last node in the linked list
-        '''
-        if self.length == 0:
-            return None
-        popped_node = self.tail
-        if self.length == 1:
-            self.head = self.tail = None
+            self.head.next = self.head
         else:
             temp = self.head
-            while temp.next is not self.tail:
+            while temp.next != self.head:
                 temp = temp.next
-            temp.next = self.head
-            self.tail = temp
-            popped_node.next = None
-        self.length -= 1
-        return popped_node
+            temp.next = new_node
+            new_node.next = self.head
 
 
-    def remove(self, index):
+    def print_list(self):
         '''
-        Removes a node at the specified index
+        Prints the linked list
         '''
-        if index < 0 or index >= self.length:
-            return None
-        elif index == 0:
-            return self.pop_first()
-        elif index == self.length - 1:
-            return self.pop()
-        prev_node = self.get(index-1)
-        popped_node = prev_node.next
-        prev_node.next = popped_node.next
-        popped_node.next = None
-        self.length -= 1
-        return popped_node
-
-
-    def delete_all(self):
-        '''
-        Deletes all the nodes in the linked list
-        '''
-        if self.length == 0:
-            return
-        self.tail.next = None
-        self.head = None
-        self.tail = None
-        self.length = 0
-
-
-    def delete_by_value(self, value):
-            '''
-            Deletes a specific node in the linked list by value
-            '''
-            if self.length == 0:
-                return False
-
-            if self.head == self.tail and self.head.value == value:
-                self.head = None
-                self.tail = None
-                self.length = 0
-                return True
-
-            prev = None
-            current = self.head
-
-            while True:
-                if current.value == value:
-                    if current == self.head:
-                        self.head = current.next
-                        self.tail.next = self.head
-                    else:
-                        prev.next = current.next
-                        if current == self.tail:
-                            self.tail = prev
-                    self.length -= 1
-                    return True
-                prev = current
-                current = current.next
-                if current == self.head:
-                    break
-
-            return False
-
-
-    def count_nodes(self):
-        '''
-        Counts the number of nodes in the linked list
-        '''
-        count = 0
+        nodes = []
         temp = self.head
         while temp:
-            count += 1
+            nodes.append(str(temp.data))
             temp = temp.next
             if temp == self.head:
                 break
-        return count
+        print(" -> ".join(nodes))
 
 
-    def split_list(self):
+    def is_sorted(self):
         '''
-        Splits the linked list into two equal halves
+        Checks if the linked list is sorted
         '''
-        if self.length == 0:
-            return None, None
+        if self.head is None or self.head.next == self.head:
+            return True
+        temp = self.head
+        while temp.next != self.head:
+            if temp.data > temp.next.data:
+                return False
+            temp = temp.next
 
-        mid = (self.length + 1) // 2
-        count = 1
-
-        first_list = CSLinkedList()
-        second_list = CSLinkedList()
-
-        current = self.head
-        last_first_list = None
-        while count <= mid:
-            first_list.append(current.value)
-            last_first_list = current
-            current = current.next
-            count += 1
-
-        if last_first_list:
-            first_list.tail = last_first_list
-            first_list.tail.next = first_list.head
-
-        while current != self.head:
-            second_list.append(current.value)
-            current = current.next
-
-        if second_list.length > 0:
-            second_list.tail = self.tail
-            second_list.tail.next = second_list.head
-
-        return first_list, second_list
+        return True
 
 
 
@@ -309,6 +364,5 @@ cslinkedlist.append(30)
 cslinkedlist.append(40)
 cslinkedlist.append(50)
 cslinkedlist.append(60)
-print(cslinkedlist)
-print(cslinkedlist.split_list())
+print(cslinkedlist.is_sorted())
 print(cslinkedlist)
