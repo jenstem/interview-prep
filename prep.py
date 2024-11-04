@@ -129,6 +129,26 @@ class CSLinkedList:
                 temp.next = new_node
 
 
+    def josephus_circle(self, step):
+        '''
+        Solves the Josephus problem using the circular linked list
+        '''
+        temp = self.head
+
+        while self.count_nodes() > 1:
+            count = 1
+            while count != step:
+                temp = temp.next
+                count += 1
+            print(f"Removed: {temp.data}")
+            self.delete_node(temp.data)
+            temp = temp.next
+
+        return f"Last person left standing: {temp.data}"
+
+
+
+
 
 cslinkedlist = CSLinkedList()
 cslinkedlist.append(10)
