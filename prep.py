@@ -27,6 +27,20 @@ class CSLinkedList:
             new_node.next = self.head
 
 
+    def count_nodes(self):
+        '''
+        Counts the number of nodes in the linked list
+        '''
+        if not self.head:
+            return 0
+        count = 1
+        temp = self.head
+        while temp.next != self.head:
+            count += 1
+            temp = temp.next
+        return count
+
+
     def prepend(self, data):
         '''
         Adds a new node to the beginning of the linked list
