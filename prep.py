@@ -51,6 +51,25 @@ class DoublyLinkedList:
         self.length = 0
 
 
+    def __str__(self):
+        """
+        Returns a string representation of the double linked list.
+
+        The format is 'value1 <-> value2 <-> value3 <-> ...'
+
+        Returns:
+            A string representing the values in the list.
+        """
+        temp_node = self.head
+        result = ''
+        while temp_node is not None:
+            result += str(temp_node.value)
+            if temp_node.next is not None:
+                result += ' <-> '
+            temp_node = temp_node.next
+        return result
+
+
     def append(self, value):
         """
         Creates a new node with the given value and appends it to the end of the list.
@@ -69,7 +88,12 @@ class DoublyLinkedList:
         self.length += 1
 
 
+
+
+
+
 newDLL = DoublyLinkedList()
 newDLL.append(10)
 newDLL.append(20)
-print(newDLL.tail)
+newDLL.append(30)
+print(newDLL)
