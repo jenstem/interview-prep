@@ -29,9 +29,47 @@ class Node:
         Returns:
             A formatted string representing the node.
         """
-        return f"{self.prev} <- {self.value} -> {self.next}"
+        return str(self.value)
 
 
+class DoublyLinkedList:
+    """
+    A class to represent a Double Linked List.
 
-new_node = Node(10)
-print(new_node)
+    Attributes:
+        head: The first node in the list.
+        tail: The last node in the list.
+        length: The number of nodes in the list.
+    """
+    def __init__(self):
+        """
+        Initializes an empty Doubly Linked List.
+        Sets head and tail to None and length to 0.
+        """
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+
+    def append(self, value):
+        """
+        Creates a new node with the given value and appends it to the end of the list.
+
+        Args:
+            value: The data to be stored in the new node.
+        """
+        new_node = Node(value)
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+        self.length += 1
+
+
+newDLL = DoublyLinkedList()
+newDLL.append(10)
+newDLL.append(20)
+print(newDLL.tail)
