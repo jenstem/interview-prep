@@ -21,7 +21,17 @@ class Node:
         self.prev = None
 
 
+    def __str__(self):
+        """
+        Returns a string representation of the node, showing its value
+        and references to the previous and next nodes.
+
+        Returns:
+            A formatted string representing the node.
+        """
+        return f"{self.prev} <- {self.value} -> {self.next}"
+
 
 
 new_node = Node(10)
-print(new_node.value)
+print(new_node)
