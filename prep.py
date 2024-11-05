@@ -88,6 +88,23 @@ class DoublyLinkedList:
         self.length += 1
 
 
+    def prepend(self, value):
+        """
+        Inserts a new node with the specified value at the beginning of the list.
+        """
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length += 1
+
+
+
+
 
 
 
@@ -96,4 +113,6 @@ newDLL = DoublyLinkedList()
 newDLL.append(10)
 newDLL.append(20)
 newDLL.append(30)
+newDLL.append(40)
+newDLL.prepend(50)
 print(newDLL)
