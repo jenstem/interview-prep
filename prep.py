@@ -113,6 +113,38 @@ class DoublyLinkedList:
             current_node = current_node.next
 
 
+    def reverse_traverse(self):
+        """
+        Prints the values of the nodes in the list in reverse order.
+        """
+        current_node = self.tail
+        while current_node:
+            print(current_node.value)
+            current_node = current_node.prev
+
+
+    def search(self, target):
+        """
+        Searches for a node with the specified value in the list.
+
+        Args:
+            target: The value to search for.
+
+        Returns:
+            The node containing the target value, or False if the value is not found.
+        """
+        current_node = self.head
+        index = 0
+        while current_node:
+            if current_node.value == target:
+                return index
+            current_node = current_node.next
+            index += 1
+        return -1
+
+
+
+
 
 
 
@@ -123,4 +155,4 @@ newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
 print(newDLL)
-newDLL.traverse()
+print(newDLL.search(40))
