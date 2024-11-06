@@ -178,6 +178,29 @@ class DoublyLinkedList:
         return False
 
 
+    def insert(self, index, value):
+        """
+        Inserts a new node with the specified value at the specified index.
+
+        Args:
+            index: The index at which to insert the new node.
+            value: The value to store in the new node.
+        """
+        if index < 0 or index > self.length:
+            print("Index out of range.")
+        new_node = Node(value)
+        if index == 0:
+            self.prepend(value)
+            return
+        elif index == self.length:
+            self.append(value)
+            return
+        temp_node = self.get(index - 1)
+        new_node.next = temp_node.next
+        new_node.prev = temp_node
+        temp_node.next.prev = new_node
+        temp_node.next = new_node
+
 
 
 
@@ -187,5 +210,5 @@ newDLL.append(20)
 newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
-print(newDLL.set_value(2, 100))
+print(newDLL.insert(1, 200))
 print(newDLL)
