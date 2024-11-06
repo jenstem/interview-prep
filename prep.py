@@ -103,7 +103,14 @@ class DoublyLinkedList:
         self.length += 1
 
 
-
+    def traverse(self):
+        """
+        Prints the values of the nodes in the list.
+        """
+        current_node = self.head
+        while current_node:
+            print(current_node.value)
+            current_node = current_node.next
 
 
 
@@ -116,3 +123,4 @@ newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
 print(newDLL)
+newDLL.traverse()
