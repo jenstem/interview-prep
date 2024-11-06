@@ -143,6 +143,39 @@ class DoublyLinkedList:
         return -1
 
 
+    def get(self, index):
+        """
+        Deletes the first node found with the specified value from the list.
+
+        Args:
+            target: The value to search for and delete.
+        """
+        if index < 0 or index >= self.length:
+            return None
+        if index < self.length // 2:
+            current_node = self.head
+            for _ in range(index):
+                current_node = current_node.next
+        else:
+            current_node = self.tail
+            for _ in range(self.length - 1, index, -1):
+                current_node = current_node.prev
+        return current_node
+
+
+    def set_value(self, index, value):
+        """
+        Updates the value of the node at the specified index.
+
+        Args:
+            index: The index of the node to update.
+            value: The new value to store in the node.
+        """
+        node = self.get(index)
+        if node:
+            node.value = value
+            return True
+        return False
 
 
 
@@ -154,5 +187,5 @@ newDLL.append(20)
 newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
+print(newDLL.set_value(2, 100))
 print(newDLL)
-print(newDLL.search(40))
