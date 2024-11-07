@@ -202,6 +202,24 @@ class DoublyLinkedList:
         temp_node.next = new_node
 
 
+    def pop_first(self):
+        """
+        Removes the first node from the list and returns its value.
+        """
+        if not self.head:
+            return None
+        popped_node = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            popped_node.next = None
+        self.length -= 1
+        return popped_node
+
+
 
 
 newDLL = DoublyLinkedList()
@@ -210,5 +228,5 @@ newDLL.append(20)
 newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
-print(newDLL.insert(1, 200))
+print(newDLL.pop_first())
 print(newDLL)
