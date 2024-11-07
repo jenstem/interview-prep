@@ -220,6 +220,29 @@ class DoublyLinkedList:
         return popped_node
 
 
+    def pop(self):
+        """
+        Removes the last node from the list and returns its value.
+        """
+        if not self.head:
+            return None
+        popped_node = self.tail
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            popped_node.prev = None
+        self.length -= 1
+        return popped_node
+
+
+
+
+
+
+
 
 
 newDLL = DoublyLinkedList()
@@ -228,5 +251,5 @@ newDLL.append(20)
 newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
-print(newDLL.pop_first())
+print(newDLL.pop())
 print(newDLL)
