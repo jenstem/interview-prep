@@ -238,8 +238,23 @@ class DoublyLinkedList:
         return popped_node
 
 
-
-
+    def remove(self, index):
+        """
+        Removes the node at the specified index from the list.
+        """
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        popped_node = self.get(index)
+        popped_node.prev.next = popped_node.next
+        popped_node.next.prev = popped_node.prev
+        popped_node.next = None
+        popped_node.prev = None
+        self.length -= 1
+        return popped_node
 
 
 
@@ -251,5 +266,5 @@ newDLL.append(20)
 newDLL.append(30)
 newDLL.append(40)
 newDLL.prepend(50)
-print(newDLL.pop())
+print(newDLL.remove(1))
 print(newDLL)
