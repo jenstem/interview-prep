@@ -7,6 +7,10 @@ class Node:
         self.prev = None
 
 
+    def __str__(self):
+        return str(self.value)
+
+
 class CircularDoublyLinkedList:
     def __init__(self, value):
         new_node = Node(value)
