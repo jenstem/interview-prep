@@ -1,26 +1,54 @@
 # Circular Doubly Linked List
 
 class Node:
+    """
+    A class to represent a node in a Circular Doubly Linked List.
+    """
     def __init__(self, value):
+        """
+        Initialize the node with a value.
+
+        Args:
+            value: The value to be stored in the node.
+        """
         self.value = value
         self.next = None
         self.prev = None
 
 
     def __str__(self):
+        """
+        Returns a string representation of the node, showing its value
+        and references to the previous and next nodes.
+
+        Returns:
+            str: The string representation of the node.
+        """
         return str(self.value)
 
 
 class CircularDoublyLinkedList:
+    """
+    A class to represent a Circular Doubly Linked List.
+    """
     def __init__(self):
+        """
+        Initialize the Circular Doubly Linked List.
+        Sets head and tail to None and length to 0.
+        """
         self.head = None
         self.tail = None
         self.length = 0
 
 
     def append(self, value):
-        new_node = Node(value)
+        """
+        Creates a new node with the given value and appends it to the end of the list.
 
+        Args:
+            value: The value to be stored in the new node.
+        """
+        new_node = Node(value)
         if self.length == 0:
             self.head = new_node
             self.tail = new_node
