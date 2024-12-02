@@ -22,7 +22,7 @@ class Node:
         and references to the previous and next nodes.
 
         Returns:
-            str: The string representation of the node.
+            A formatted string representing the node.
         """
         return str(self.value)
 
@@ -39,6 +39,26 @@ class CircularDoublyLinkedList:
         self.head = None
         self.tail = None
         self.length = 0
+
+
+    def __str__(self):
+        """
+        Returns a string representation of the node, showing its value
+        and references to the previous and next nodes.
+
+        The format is 'value1 <-> value2 <-> value3 <-> ...'
+
+        Returns:
+            str: The string representation of the node.
+        """
+        current_node = self.head
+        result = ''
+        while current_node:
+            result += str(current_node.value)
+            current_node = current_node.next
+            if current_node == self.head: break
+            result += ' <-> '
+        return result
 
 
     def append(self, value):
@@ -65,11 +85,9 @@ class CircularDoublyLinkedList:
 
 
 
-
 new_cdll = CircularDoublyLinkedList()
 new_cdll.append(10)
 new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
-print(new_cdll.tail.value)
-print(new_cdll.length)
+print(new_cdll)
