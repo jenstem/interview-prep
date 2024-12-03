@@ -83,6 +83,23 @@ class CircularDoublyLinkedList:
         self.length += 1
 
 
+    def prepend(self, value):
+        """
+        Inserts a new node with the specified value at the beginning of the list.
+        """
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            new_node.next = new_node
+            new_node.prev = new_node
+        else:
+            self.tail.next = new_node
+            self.head.prev = new_node
+            new_node.prev = self.tail
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
 
 
 new_cdll = CircularDoublyLinkedList()
@@ -90,4 +107,5 @@ new_cdll.append(10)
 new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
+new_cdll.prepend(5)
 print(new_cdll)
