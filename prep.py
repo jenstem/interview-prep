@@ -102,10 +102,25 @@ class CircularDoublyLinkedList:
         self.length += 1
 
 
+    def traverse(self):
+        """
+        Prints the values of the nodes in the list.
+        """
+        current_node = self.head
+        while current_node:
+            print(current_node.value)
+            current_node = current_node.next
+            if current_node == self.head:
+                break
+
+
+
+
 new_cdll = CircularDoublyLinkedList()
 new_cdll.append(10)
 new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.prepend(5)
+new_cdll.traverse()
 print(new_cdll)
