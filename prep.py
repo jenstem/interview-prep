@@ -126,6 +126,18 @@ class CircularDoublyLinkedList:
                 break
 
 
+    def search(self, target):
+        """
+        Searches for a node with the given value in the list.
+        """
+        current_node = self.head
+        while current_node:
+            if current_node.value == target:
+                return True
+            current_node = current_node.next
+            if current_node == self.head:
+                break
+        return False
 
 
 
@@ -135,5 +147,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.prepend(5)
-new_cdll.reverse_traverse()
+print(new_cdll.search(30))
 print(new_cdll)
