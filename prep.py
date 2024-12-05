@@ -114,6 +114,19 @@ class CircularDoublyLinkedList:
                 break
 
 
+    def reverse_traverse(self):
+        """
+        Prints the values of the nodes in the list in reverse order.
+        """
+        current_node = self.tail
+        while current_node:
+            print(current_node.value)
+            current_node = current_node.prev
+            if current_node == self.tail:
+                break
+
+
+
 
 
 new_cdll = CircularDoublyLinkedList()
@@ -122,5 +135,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.prepend(5)
-new_cdll.traverse()
+new_cdll.reverse_traverse()
 print(new_cdll)
