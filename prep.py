@@ -140,12 +140,31 @@ class CircularDoublyLinkedList:
         return False
 
 
+    def get(self, index):
+        """
+        Retrieves the node at the specified index in the list.
+        """
+        if index < 0 or index >= self.length:
+            return None
+        current_node = None
+        if index < self.length // 2:
+            current_node = self.head
+            for i in range(index):
+                current_node = current_node.next
+        else:
+            current_node = self.tail
+            for i in range(self.length - 1, index, -1):
+                current_node = current_node.prev
+        return current_node
+
+
+
 
 new_cdll = CircularDoublyLinkedList()
 new_cdll.append(10)
 new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
-new_cdll.prepend(5)
-print(new_cdll.search(30))
+new_cdll.append(50)
+print(new_cdll.get(9))
 print(new_cdll)
