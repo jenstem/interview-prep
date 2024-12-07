@@ -158,6 +158,17 @@ class CircularDoublyLinkedList:
         return current_node
 
 
+    def set_value(self, index, value):
+        """
+        Sets the value of the node at the specified index in the list.
+        """
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+
 
 
 new_cdll = CircularDoublyLinkedList()
@@ -166,5 +177,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.append(50)
-print(new_cdll.get(9))
+print(new_cdll.set_value(2, 60))
 print(new_cdll)
