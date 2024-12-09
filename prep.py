@@ -213,7 +213,24 @@ class CircularDoublyLinkedList:
         return popped_node
 
 
-
+    def pop(self):
+        """
+        Removes the last node in the list.
+        """
+        if self.length == 0:
+            return None
+        popped_node = self.tail
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail = self.tail.prev
+            popped_node.next = None
+            popped_node.prev = None
+            self.tail.next = self.head
+            self.head.prev = self.tail
+        self.length -= 1
+        return popped_node
 
 
 
@@ -224,5 +241,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.append(50)
-new_cdll.pop_first()
+new_cdll.pop()
 print(new_cdll)
