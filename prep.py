@@ -169,6 +169,53 @@ class CircularDoublyLinkedList:
         return False
 
 
+    def insert(self, index, value):
+        """
+        Inserts a new node with the specified value at the specified index in the list.
+        """
+        if index < 0 or index > self.length:
+            print("Error:  Index out of range")
+            return
+        if index == 0:
+            self.prepend(value)
+            return
+        if index == self.length:
+            self.append(value)
+            return
+        new_node = Node(value)
+        temp_node = self.get(index-1)
+        new_node.next = temp_node.next
+        new_node.prev = temp_node
+        temp_node.next.prev = new_node
+        temp_node.next = new_node
+        self.length += 1
+
+
+    def pop_first(self):
+        """
+        Removes the first node in the list.
+        """
+        if self.length == 0:
+            return None
+        popped_node = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+            return popped_node
+        else:
+            self.head
+            self.head = self.head.next
+            popped_node.prev = None
+            popped_node.next = None
+            self.head.prev = self.tail
+            self.tail.next = self.head
+        self.length -= 1
+        return popped_node
+
+
+
+
+
 
 
 new_cdll = CircularDoublyLinkedList()
@@ -177,5 +224,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.append(50)
-print(new_cdll.set_value(2, 60))
+new_cdll.pop_first()
 print(new_cdll)
