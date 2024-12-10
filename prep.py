@@ -252,6 +252,14 @@ class CircularDoublyLinkedList:
         return popped_node
 
 
+    def delete_all(self):
+        """
+        Deletes the entire list.
+        """
+        self.head = None
+        self.tail = None
+        self.length = 0
+
 
 new_cdll = CircularDoublyLinkedList()
 new_cdll.append(10)
@@ -259,5 +267,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.append(50)
-new_cdll.remove(3)
+new_cdll.delete_all()
 print(new_cdll)
