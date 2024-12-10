@@ -233,6 +233,24 @@ class CircularDoublyLinkedList:
         return popped_node
 
 
+    def remove(self, index):
+        """
+        Removes a node with the specified index from the list.
+        """
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        popped_node = self.get(index)
+        popped_node.prev.next = popped_node.next
+        popped_node.next.prev = popped_node.prev
+        popped_node.next = None
+        popped_node.prev = None
+        self.length -= 1
+        return popped_node
+
 
 
 new_cdll = CircularDoublyLinkedList()
@@ -241,5 +259,5 @@ new_cdll.append(20)
 new_cdll.append(30)
 new_cdll.append(40)
 new_cdll.append(50)
-new_cdll.pop()
+new_cdll.remove(3)
 print(new_cdll)
