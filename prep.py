@@ -1,3 +1,6 @@
+from random import randint
+
+
 class Node:
     def __init__(self, value=None):
         self.value = value
@@ -60,3 +63,19 @@ class LinkedList:
             self.tail.next = Node(value)
             self.tail = self.tail.next
         return self.tail
+
+
+    def generate(self, n, min_value, max_value):
+        """
+        Generate a linked list from a list of values.
+        """
+        self.head = None
+        self.tail = None
+        for i in range(n):
+            self.add(randint(min_value, max_value))
+        return self
+
+
+customLL = LinkedList()
+customLL.generate(10, 0, 99)
+print(customLL)
