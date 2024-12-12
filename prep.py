@@ -110,7 +110,7 @@ llB.add(2)
 
 print(llA)
 print(llB)
-print(llA.sumList, llB.sumList)
+print(llA.sumList(llB))
 
 
 # customLL = LinkedList()
