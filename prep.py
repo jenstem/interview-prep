@@ -78,22 +78,26 @@ class LinkedList:
         return self
 
 
-    def nthToLast(ll, n):
-        p1 = ll.head
-        p2 = ll.head
+    def partition(ll, x):
+        curNode = ll.head
+        ll.tail = curNode
 
-        for i in range(n):
-            if p2 is None:
-                return None
-            p2 = p2.next
-
-        while p2:
-            p1 = p1.next
-            p2 = p2.next
-        return p1
+        while curNode:
+            nextNode = curNode.next
+            curNode.next = None
+            if curNode.value < x:
+                curNode.next = ll.head
+                ll.head = curNode
+            else:
+                ll.tail.next = curNode
+                ll.tail = curNode
+            curNode = nextNode
+        if ll.tail.next is not None:
+            ll.tail.next = None
 
 
 customLL = LinkedList()
 customLL.generate(10, 0, 99)
 print(customLL)
-print(customLL.nthToLast(3))
+print(customLL.partition(30))
+print(customLL)
