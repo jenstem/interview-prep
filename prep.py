@@ -78,26 +78,43 @@ class LinkedList:
         return self
 
 
-    def partition(ll, x):
-        curNode = ll.head
-        ll.tail = curNode
+    def sumList(llA, llB):
+        temp_node1 = llA.head
+        temp_node2 = llB.head
+        carry = 0
+        ll = LinkedList()
 
-        while curNode:
-            nextNode = curNode.next
-            curNode.next = None
-            if curNode.value < x:
-                curNode.next = ll.head
-                ll.head = curNode
-            else:
-                ll.tail.next = curNode
-                ll.tail = curNode
-            curNode = nextNode
-        if ll.tail.next is not None:
-            ll.tail.next = None
+        while temp_node1 or temp_node2:
+            result = carry
+            if temp_node1:
+                result += temp_node1.value
+                temp_node1 = temp_node1.next
+            if temp_node2:
+                result += temp_node2.value
+                temp_node2 = temp_node2.next
+            ll.add(int(result % 10))
+            carry = result / 10
+
+        return ll
 
 
-customLL = LinkedList()
-customLL.generate(10, 0, 99)
-print(customLL)
-print(customLL.partition(30))
-print(customLL)
+llA = LinkedList()
+llA.add(7)
+llA.add(1)
+llA.add(6)
+
+llB = LinkedList()
+llB.add(5)
+llB.add(9)
+llB.add(2)
+
+print(llA)
+print(llB)
+print(llA.sumList, llB.sumList)
+
+
+# customLL = LinkedList()
+# customLL.generate(10, 0, 99)
+# print(customLL)
+# print(customLL.partition(30))
+# print(customLL)
