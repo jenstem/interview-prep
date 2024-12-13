@@ -78,39 +78,52 @@ class LinkedList:
         return self
 
 
-    def sumList(llA, llB):
-        temp_node1 = llA.head
-        temp_node2 = llB.head
-        carry = 0
-        ll = LinkedList()
+def addSameNode(llA, llB, value):
+    tempNode = Node(value)
+    llA.tail.next = tempNode
+    llA.tail = tempNode
+    llB.tail.next = tempNode
+    llB.tail = tempNode
 
-        while temp_node1 or temp_node2:
-            result = carry
-            if temp_node1:
-                result += temp_node1.value
-                temp_node1 = temp_node1.next
-            if temp_node2:
-                result += temp_node2.value
-                temp_node2 = temp_node2.next
-            ll.add(int(result % 10))
-            carry = result / 10
 
-        return ll
+def intersection(llA, llB):
+    if llA.tail is not llB.tail:
+        return False
+
+    lenA = len(llA)
+    lenB = len(llB)
+
+    shorter = llA if lenA < lenB else llB
+    longer = llA if lenA > lenB else llB
+
+    diff = len(longer) - len(shorter)
+
+    longerNode = longer.head
+    shorterNode = shorter.head
+
+    for i in range(diff):
+        longerNode = longerNode.next
+
+    while shorterNode is not longerNode:
+        shorterNode = shorterNode.next
+        longerNode = longerNode.next
+
+    return longerNode
 
 
 llA = LinkedList()
-llA.add(7)
-llA.add(1)
-llA.add(6)
+llA.generate(3, 0, 10)
 
 llB = LinkedList()
-llB.add(5)
-llB.add(9)
-llB.add(2)
+llB.generate(4, 0, 10)
+
+addSameNode(llA, llB, 11)
+addSameNode(llA, llB, 14)
 
 print(llA)
 print(llB)
-print(llA.sumList(llB))
+
+print(intersection(llA, llB))
 
 
 # customLL = LinkedList()
