@@ -10,3 +10,5 @@ customStack.push(4)
 
 customStack = [1,2,3,4]
 customStack.pop()
+
+customStack.peek()
