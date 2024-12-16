@@ -14,3 +14,5 @@ customStack.pop()
 customStack.peek()
 
 customStack.isEmpty()
+
+customStack.isFull()
