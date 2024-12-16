@@ -1,20 +1,13 @@
-customStack()
-customStack = []
+# Create a Stack with a List
+# No size limit
 
 
-customStack.push(1)
-customStack.push(2)
-customStack.push(3)
-customStack.push(4)
+class Stack:
+    def __init__(self):
+        self.list = []
 
 
-customStack = [1,2,3,4]
-customStack.pop()
-
-customStack.peek()
-
-customStack.isEmpty()
-
-customStack.isFull()
-
-customStack.delete()
+    def __str__(self):
+        values = self.list.reverse()
+        values = [str(x) for x in self.list]
+        return '\n'.join(values)
