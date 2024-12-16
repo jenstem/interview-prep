@@ -16,3 +16,5 @@ customStack.peek()
 customStack.isEmpty()
 
 customStack.isFull()
+
+customStack.delete()
