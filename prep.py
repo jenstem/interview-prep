@@ -16,9 +16,19 @@ class Stack:
         self.list.append(value)
         return "The element has been successfully inserted"
 
+    def pop(self):
+        if self.isEmpty():
+            return "The stack is empty"
+        else:
+            return self.list.pop()
+
+
+
+
 
 customStack = Stack()
 customStack.push(1)
 customStack.push(2)
 customStack.push(3)
+customStack.pop()
 print(customStack)
