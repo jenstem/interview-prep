@@ -11,3 +11,10 @@ class Stack:
         """
         self.maxSize = maxSize
         self.list = []
+
+    def __str__(self):
+        """
+        Return a string representation of the stack.
+        """
+        values = [str(x) for x in reversed(self.list)]
+        return '\n'.join(values)
