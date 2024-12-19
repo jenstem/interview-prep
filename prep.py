@@ -18,3 +18,9 @@ class Stack:
         """
         values = [str(x) for x in reversed(self.list)]
         return '\n'.join(values)
+
+    def isEmpty(self):
+        """
+        Check if the stack is empty.
+        """
+        return len(self.list) == 0
