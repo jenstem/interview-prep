@@ -24,3 +24,9 @@ class Stack:
         Check if the stack is empty.
         """
         return len(self.list) == 0
+
+    def isFull(self):
+        """
+        Check if the stack is full.
+        """
+        return len(self.list) == self.maxSize
