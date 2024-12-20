@@ -30,3 +30,13 @@ class Stack:
         Check if the stack is full.
         """
         return len(self.list) == self.maxSize
+
+    def push(self, value):
+        """
+        Add a value to the stack.
+        """
+        if self.isFull():
+            return "Stack is full"
+        else:
+            self.list.append(value)
+            return "The element has been successfully added to the stack"
