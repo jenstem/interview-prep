@@ -40,3 +40,21 @@ class Stack:
         else:
             self.list.append(value)
             return "The element has been successfully added to the stack"
+
+    def pop(self):
+        """
+        Remove the top element from the stack.
+        """
+        if self.isEmpty():
+            return "There is not any element in the stack"
+        else:
+            return self.list.pop()
+
+
+customStack = Stack(4)
+print(customStack.isEmpty())
+print(customStack.isFull())
+customStack.push(1)
+customStack.push(2)
+customStack.push(3)
+print(customStack)
