@@ -59,7 +59,11 @@ class Stack:
         else:
             return self.list[len(self.list)-1]
 
-
+    def delete(self):
+        """
+        Delete the entire stack.
+        """
+        self.list = []
 
 
 customStack = Stack(4)
