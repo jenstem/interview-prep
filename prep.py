@@ -57,7 +57,7 @@ class Stack:
         if self.isEmpty():
             return "There is not any element in the stack"
         else:
-            return self.list[-1]
+            return self.list[len(self.list)-1]
 
 
 
