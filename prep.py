@@ -50,6 +50,17 @@ class Stack:
         else:
             return self.list.pop()
 
+    def peek(self):
+        """
+        Return the top element of the stack.
+        """
+        if self.isEmpty():
+            return "There is not any element in the stack"
+        else:
+            return self.list[-1]
+
+
+
 
 customStack = Stack(4)
 print(customStack.isEmpty())
