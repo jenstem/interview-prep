@@ -18,3 +18,13 @@ class LinkedList:
 class Stack:
     def __init__(self):
         self.LinkedList = LinkedList()
+
+    def isEmpty(self):
+        if self.LinkedList.head == None:
+            return True
+        else:
+            return False
+
+
+customStack = Stack()
+print(customStack.isEmpty())
