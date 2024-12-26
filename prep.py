@@ -1,6 +1,5 @@
 # Create a Stack with a Linked List
 
-
 class Node:
     def __init__(self, value = None):
         self.value = value
@@ -15,3 +14,7 @@ class LinkedList:
         while curNode:
             yield curNode
             curNode = curNode.next
+
+class Stack:
+    def __init__(self):
+        self.LinkedList = LinkedList()
