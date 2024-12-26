@@ -34,6 +34,18 @@ class Stack:
         node.next = self.LinkedList.head
         self.LinkedList.head = node
 
+    def pop(self):
+        if self.isEmpty():
+            return "There are no elements in the stack"
+        else:
+            nodeValue = self.LinkedList.head.value
+            self.LinkedList.head = self.LinkedList.head.next
+            return nodeValue
+
 
 customStack = Stack()
-print(customStack.isEmpty())
+customStack.push(1)
+customStack.push(2)
+customStack.push(3)
+customStack.pop()
+print(customStack)
