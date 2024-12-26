@@ -25,6 +25,11 @@ class Stack:
         else:
             return False
 
+    def push(self, value):
+        node = Node(value)
+        node.next = self.LinkedList.head
+        self.LinkedList.head = node
+
 
 customStack = Stack()
 print(customStack.isEmpty())
