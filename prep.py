@@ -49,6 +49,11 @@ class Stack:
             nodeValue = self.LinkedList.head.value
             return nodeValue
 
+    def delete(self):
+        self.LinkedList.head = None
+
+
+
 customStack = Stack()
 customStack.push(1)
 customStack.push(2)
