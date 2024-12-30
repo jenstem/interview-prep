@@ -14,3 +14,7 @@ class Queue:
             return True
         else:
             return False
+
+    def enqueue(self, value):
+        self.items.append(value)
+        return "The element is inserted at the end of the queue"
