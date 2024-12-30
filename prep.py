@@ -18,3 +18,17 @@ class Queue:
     def enqueue(self, value):
         self.items.append(value)
         return "The element is inserted at the end of the queue"
+
+    def dequeue(self):
+        if self.isEmpty():
+            return "The queue is empty"
+        else:
+            return self.items.pop(0)
+
+
+customQueue = Queue()
+customQueue.enqueue(1)
+customQueue.enqueue(2)
+customQueue.enqueue(3)
+print(customQueue.dequeue())
+print(customQueue)
