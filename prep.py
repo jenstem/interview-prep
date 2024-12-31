@@ -55,9 +55,16 @@ class Queue:
             self.items[start] = None
             return firstElement
 
+    def peek(self):
+        if self.isEmpty():
+            return "There is not any element in the Queue"
+        else:
+            return self.items[self.start]
+
 
 customQueue = Queue(3)
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
-print(customQueue)
+print(customQueue.dequeue())
+print(customQueue.peek())
