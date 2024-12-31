@@ -19,3 +19,13 @@ class Queue:
             return True
         else:
             return False
+
+    def isEmpty(self):
+        if self.top == -1:
+            return True
+        else:
+            return False
+
+
+customQueue = Queue(3)
+print(customQueue.isEmpty())
