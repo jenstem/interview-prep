@@ -25,6 +25,12 @@ class Queue:
         else:
             return self.items.pop(0)
 
+    def peek(self):
+        if self.isEmpty():
+            return "The queue is empty"
+        else:
+            return self.items[0]
+
 
 customQueue = Queue()
 customQueue.enqueue(1)
