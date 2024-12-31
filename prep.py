@@ -11,3 +11,11 @@ class Queue:
     def __str__(self):
         values = [str(x) for x in self.items]
         return ' '.join(values)
+
+    def isFull(self):
+        if self.top + 1 == self.start:
+            return True
+        elif self.start == 9 and self.top + 1 == self.maxSize:
+            return True
+        else:
+            return False
