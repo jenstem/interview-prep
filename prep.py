@@ -15,7 +15,7 @@ class Queue:
     def isFull(self):
         if self.top + 1 == self.start:
             return True
-        elif self.start == 9 and self.top + 1 == self.maxSize:
+        elif self.start == 0 and self.top + 1 == self.maxSize:
             return True
         else:
             return False
@@ -26,6 +26,23 @@ class Queue:
         else:
             return False
 
+    def enqueue(self, value):
+        if self.isFull():
+            return "The Queue is Full"
+        else:
+            if self.top + 1 == self.maxSize:
+                self.top = 0
+            else:
+                self.top += 1
+                if self.start == -1:
+                    self.start = 0
+            self.items[self.top] = value
+            return "The element has been inserted at the end of the Queue"
+
+
 
 customQueue = Queue(3)
-print(customQueue.isEmpty())
+customQueue.enqueue(1)
+customQueue.enqueue(2)
+customQueue.enqueue(3)
+print(customQueue)
