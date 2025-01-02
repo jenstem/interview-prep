@@ -23,3 +23,7 @@ class LinkedList:
 class Queue:
     def __init__(self):
         self.linkedList = LinkedList()
+
+    def __str__(self):
+        values = [str(x) for x in self.linkedList]
+        return ' '.join(values)
