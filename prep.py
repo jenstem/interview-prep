@@ -37,9 +37,18 @@ class Queue:
             self.linkedList.tail.next = newNode
             self.linkedList.tail = newNode
 
+    def isEmpty(self):
+        if self.linkedList.head == None:
+            return True
+        else:
+            return False
+
+
+
 
 customQueue = Queue()
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
+print(customQueue.isEmpty())
 print(customQueue)
