@@ -43,6 +43,17 @@ class Queue:
         else:
             return False
 
+    def dequeue(self):
+        if self.isEmpty():
+            return "Queue has no nodes."
+        else:
+            tempNode = self.linkedList.head
+            if self.linkedList.head == self.linkedList.tail:
+                self.linkedList.head = None
+                self.linkedList.tail = None
+            else:
+                self.linkedList.head = self.linkedList.head.next
+            return tempNode
 
 
 
@@ -50,5 +61,5 @@ customQueue = Queue()
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
-print(customQueue.isEmpty())
+print(customQueue.dequeue())
 print(customQueue)
