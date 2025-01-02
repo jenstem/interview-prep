@@ -19,3 +19,7 @@ class LinkedList:
         while curNode:
             yield curNode
             curNode = curNode.next
+
+class Queue:
+    def __init__(self):
+        self.linkedList = LinkedList()
