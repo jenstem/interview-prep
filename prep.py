@@ -27,3 +27,19 @@ class Queue:
     def __str__(self):
         values = [str(x) for x in self.linkedList]
         return ' '.join(values)
+
+    def enqueue(self, value):
+        newNode = Node(value)
+        if self.linkedList.head == None:
+            self.linkedList.head = newNode
+            self.linkedList.tail = newNode
+        else:
+            self.linkedList.tail.next = newNode
+            self.linkedList.tail = newNode
+
+
+customQueue = Queue()
+customQueue.enqueue(1)
+customQueue.enqueue(2)
+customQueue.enqueue(3)
+print(customQueue)
