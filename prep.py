@@ -55,11 +55,18 @@ class Queue:
                 self.linkedList.head = self.linkedList.head.next
             return tempNode
 
+    def peek(self):
+        if self.isEmpty():
+            return "Queue has no nodes."
+        else:
+            return self.linkedList.head
+
+
 
 
 customQueue = Queue()
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
-print(customQueue.dequeue())
+print(customQueue.peek())
 print(customQueue)
