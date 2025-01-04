@@ -61,12 +61,14 @@ class Queue:
         else:
             return self.linkedList.head
 
-
+    def delete(self):
+        self.linkedList.head = None
+        self.linkedList.tail = None
 
 
 customQueue = Queue()
 customQueue.enqueue(1)
 customQueue.enqueue(2)
 customQueue.enqueue(3)
-print(customQueue.peek())
+print(customQueue.delete())
 print(customQueue)
