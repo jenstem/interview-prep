@@ -1,12 +1,8 @@
-# Create a Queue with Queue Modules - Deque Class / FIFO Queue
+# Create a Queue with Queue Module - FIFO Queue w Queue Class
 
-from collections import deque
 
-customQueue = deque(maxlen=3)
-print(customQueue)
+import queue as q
 
-customQueue.append(1)
-customQueue.append(2)
-customQueue.append(3)
-print(customQueue.clear())
-print(customQueue)
+customQueue = q.Queue(maxsize=3)
+
+print(customQueue.qsize())
