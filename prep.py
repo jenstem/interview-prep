@@ -1,68 +1,53 @@
 # Stack and Queue Interview Questions
 
-# Three in One
+# Stack Minimum
 
-# Describe how you could use a single Python list to implement three stacks.
+# How would you design a stack which, in addition to push and pop,
+# has a function min which returns the minimum element? Push, pop and
+# min should all operate in O(1) time.
 
-# Can divide a list into 3 equal parts and use each part as a stack.
+class Node():
+    def __init__(self, value=None, next=None):
+        self.value = value
+        self.next = next
 
-# [0,1,2,3,4,5,6,7,8]
+    def __str__(self):
+        string = str(self.value)
+        if self.next:
+            string += ',' + str(self.next)
+        return string
 
-# Stack 1 - [0 to n/3) - goes from 0 to n/3 or 2
-# Stack 2 - [n/3 to 2n/3) - goes from n/3 or 3 to 2n/3 or 5
-# Stack 3 - [2n/3 to n) - goes from 2n/3 or 6 to n or 8
+class Stack():
+    def __init__(self):
+        self.top = None
+        self.minNode = None
 
-class MultiStack:
-    def __init__(self, stacksize):
-        self.numstacks = 3
-        self.custList = [0] * (stacksize * self.numstacks)
-        self.sizes = [0] * self.numstacks
-        self.stacksize = stacksize
+    def min(self):
+        if not self.minNode:
+            return None
+        return self.minNode.value
 
-    def isFull(self, stacknum):
-        if self.sizes[stacknum] == self.stacksize:
-            return True
+    def push(self, item):
+        if self.minNode and (self.minNode.value < item):
+            self.minNode = Node(value = self.minNode.value, next=self.minNode)
         else:
-            return False
+            self.minNode = Node(value=item, next=self.minNode)
+        self.top = Node(value=item, next=self.top)
 
-    def isEmpty(self, stacknum):
-        if self.sizes[stacknum] == 0:
-            return True
+    def pop(self):
+        if not self.top:
+            return None
         else:
-            return False
+            self.minNode = self.minNode.next
+            item = self.top.value
+            self.top = self.top.next
+            return item
 
-    def indexOfTop(self, stacknum):
-        offset = stacknum * self.stacksize
-        return offset + self.sizes[stacknum] - 1
-
-    def push(self, item, stacknum):
-        if self.isFull(stacknum):
-            return "Stack is full"
-        else:
-            self.sizes[stacknum] += 1
-            self.custList[self.indexOfTop(stacknum)] = item
-
-    def pop(self, stacknum):
-        if self.isEmpty(stacknum):
-            return "Stack is empty"
-        else:
-            value = self.custList[self.indexOfTop(stacknum)]
-            self.custList[self.indexOfTop(stacknum)] = 0
-            self.sizes[stacknum] -= 1
-            return value
-
-    def peek(self, stacknum):
-        if self.isEmpty(stacknum):
-            return "Stack is empty"
-        else:
-            value = self.custList[self.indexOfTop(stacknum)]
-            return value
-
-
-customStack = MultiStack(6)
-print(customStack.isFull(0))
-print(customStack.isEmpty(1))
-customStack.push(1, 0)
-customStack.push(2, 0)
-customStack.push(3, 2)
-print(customStack.pop(0))
+customStack = Stack()
+customStack.push(5)
+print(customStack.min())
+customStack.push(6)
+customStack.push(3)
+print(customStack.min())
+customStack.pop()
+print(customStack.min())
