@@ -1,53 +1,49 @@
 # Stack and Queue Interview Questions
 
-# Stack Minimum
+# Stack of Plates
 
-# How would you design a stack which, in addition to push and pop,
-# has a function min which returns the minimum element? Push, pop and
-# min should all operate in O(1) time.
+# Imagine a stack of plates.  If the stack gets too high, it might topple.
+# Therefore, in real life, we would start a new stack when the previous stack
+# exceeds some threshold.  Implement a data structure SetOfStacks that mimics
+# this.  SetOfStacks should be composed of several stacks and should create
+# a new stack once the previous one exceeds capacity.  SetOfStacks.push() and
+# SetOfStacks.pop() should behave identically to a single stack (that is, pop()
+# should return the same values as it would if there were just a single stack).
 
-class Node():
-    def __init__(self, value=None, next=None):
-        self.value = value
-        self.next = next
+# Implement a function popAt(int index) which performs a pop operation on a
+# specific sub-stack.
+
+class PlateStack():
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.stacks = []
 
     def __str__(self):
-        string = str(self.value)
-        if self.next:
-            string += ',' + str(self.next)
-        return string
-
-class Stack():
-    def __init__(self):
-        self.top = None
-        self.minNode = None
-
-    def min(self):
-        if not self.minNode:
-            return None
-        return self.minNode.value
+        return self.stacks
 
     def push(self, item):
-        if self.minNode and (self.minNode.value < item):
-            self.minNode = Node(value = self.minNode.value, next=self.minNode)
+        if len(self.stacks) > 0 and (len(self.stacks[-1]) < self.capacity):
+            self.stacks[-1].append(item)
         else:
-            self.minNode = Node(value=item, next=self.minNode)
-        self.top = Node(value=item, next=self.top)
+            self.stacks.append([item])
 
     def pop(self):
-        if not self.top:
+        while len(self.stacks) and len(self.stacks[-1]) == 0:
+            self.stacks.pop()
+        if len(self.stacks) == 0:
             return None
         else:
-            self.minNode = self.minNode.next
-            item = self.top.value
-            self.top = self.top.next
-            return item
+            return self.stacks[-1].pop()
 
-customStack = Stack()
-customStack.push(5)
-print(customStack.min())
-customStack.push(6)
+    def popAt(self, stackNumber):
+        if len(self.stacks[stackNumber]) > 0:
+            return self.stacks[stackNumber].pop()
+        else:
+            return None
+
+
+customStack = PlateStack(2)
+customStack.push(1)
+customStack.push(2)
 customStack.push(3)
-print(customStack.min())
-customStack.pop()
-print(customStack.min())
+print(customStack.pop())
