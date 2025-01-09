@@ -23,3 +23,6 @@ class Queue():
     def __init__(self):
         self.inStack = Stack()
         self.outStack = Stack()
+
+    def enqueue(self, item):
+        self.inStack.push(item)
