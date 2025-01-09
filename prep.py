@@ -10,3 +10,6 @@ class Stack():
 
     def __len__(self):
         return len(self.list)
+
+    def push(self, item):
+        self.list.append(item)
