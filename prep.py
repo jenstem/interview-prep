@@ -13,3 +13,8 @@ class Stack():
 
     def push(self, item):
         self.list.append(item)
+
+    def pop(self):
+        if len(self.list) == 0:
+            return None
+        return self.list.pop()
