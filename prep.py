@@ -18,3 +18,8 @@ class Stack():
         if len(self.list) == 0:
             return None
         return self.list.pop()
+
+class Queue():
+    def __init__(self):
+        self.inStack = Stack()
+        self.outStack = Stack()
