@@ -26,3 +26,11 @@ class Queue():
 
     def enqueue(self, item):
         self.inStack.push(item)
+
+    def dequeue(self):
+        while len(self.inStack):
+            self.outStack.push(self.inStack.pop())
+        result = self.outStack.pop()
+        while len(self.outStack):
+            self.inStack.push(self.outStack.pop())
+        return result
