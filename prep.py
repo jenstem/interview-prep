@@ -34,3 +34,9 @@ class Queue():
         while len(self.outStack):
             self.inStack.push(self.outStack.pop())
         return result
+
+customQueue = Queue()
+customQueue.enqueue(1)
+customQueue.enqueue(2)
+customQueue.enqueue(3)
+print(customQueue.dequeue())
