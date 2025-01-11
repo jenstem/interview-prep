@@ -1,42 +1,16 @@
 # Stack and Queue Interview Questions
 
-# Queue via Stacks
+# Animal Shelter
 
-# Implement a Queue class which implements a queue using two stacks.
+# An animal shelter, which holds only dogs and cats, operates on a strictly
+# "first in, first out" basis.  People must adopt either the "oldest" (based on
+# arrival time) of all animals at the shelter, or they can select whether they
+# would prefer a dog or a cat (and will receive the oldest animal of that type).
+# They cannot select which specific animal they would like.  Create the data
+# structures to maintain this system and implement operations such as enqueue,
+# dequeueAny, dequeueDog, and dequeueCat.
 
-class Stack():
+class AnimalShelter():
     def __init__(self):
-        self.list = []
-
-    def __len__(self):
-        return len(self.list)
-
-    def push(self, item):
-        self.list.append(item)
-
-    def pop(self):
-        if len(self.list) == 0:
-            return None
-        return self.list.pop()
-
-class Queue():
-    def __init__(self):
-        self.inStack = Stack()
-        self.outStack = Stack()
-
-    def enqueue(self, item):
-        self.inStack.push(item)
-
-    def dequeue(self):
-        while len(self.inStack):
-            self.outStack.push(self.inStack.pop())
-        result = self.outStack.pop()
-        while len(self.outStack):
-            self.inStack.push(self.outStack.pop())
-        return result
-
-customQueue = Queue()
-customQueue.enqueue(1)
-customQueue.enqueue(2)
-customQueue.enqueue(3)
-print(customQueue.dequeue())
+        self.cats = []
+        self.dogs = []
