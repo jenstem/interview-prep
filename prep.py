@@ -20,3 +20,10 @@ class AnimalShelter():
             self.cats.append(animal)
         else:
             self.dogs.append(animal)
+
+    def dequeueCat(self):
+        if len(self.cats) == 0:
+            return None
+        else:
+            cat = self.cats.pop(0)
+            return cat
