@@ -27,3 +27,10 @@ class AnimalShelter():
         else:
             cat = self.cats.pop(0)
             return cat
+
+    def dequeueDog(self):
+        if len(self.dogs) == 0:
+            return None
+        else:
+            dog = self.dogs.pop(0)
+            return dog
