@@ -1,18 +1,10 @@
 # Recursion
 
-def firstMethod():
-    secondMethod()
-    print("I am the first method")
+def recursiveMethod(n):
+    if n < 1:
+        print("n is less than 1")
+    else:
+        recursiveMethod(n - 1)
+        print(n)
 
-def secondMethod():
-    thirdMethod()
-    print("I am the second method")
-
-def thirdMethod():
-    fourthMethod()
-    print("I am the third method")
-
-def fourthMethod():
-    print("I am the fourth method")
-
-firstMethod()
+recursiveMethod(4)
