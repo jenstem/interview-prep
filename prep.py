@@ -1,11 +1,13 @@
-# Recursion - Fibonacci Sequence
-# 0,1,1,2,3,5,8,13,21,34,55,89...
+# Recursion - Sum of Digits
 
-def fibonacci(n):
-    assert n >= 0 and int(n) == n, 'The number must be a positive integer only!'
-    if n in [0,1]:
-        return n
+# How to find the sum of digits of a positive integer number using recursion?
+
+
+def sum_of_digits(n):
+    assert n >= 0 and int(n) == n, 'The number has to be a positive integer only!'
+    if n == 0:
+        return 0
     else:
-        return fibonacci(n-1) + fibonacci(n-2)
+        return int(n % 10) + sum_of_digits(int(n // 10))
 
-print(fibonacci(7))
+print(sum_of_digits(12))
