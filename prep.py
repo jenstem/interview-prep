@@ -1,13 +1,12 @@
-# Recursion - Sum of Digits
+# Recursion - Power
 
-# How to find the sum of digits of a positive integer number using recursion?
+# How to calculate power of a number using recursion?
 
 
-def sum_of_digits(n):
-    assert n >= 0 and int(n) == n, 'The number has to be a positive integer only!'
-    if n == 0:
-        return 0
-    else:
-        return int(n % 10) + sum_of_digits(int(n // 10))
+def power(base, exp):
+    assert int(exp) == exp, 'The exponent must be an integer number only'
+    if exp == 0:
+        return 1
+    return base * power(base, exp-1)
 
-print(sum_of_digits(12))
+print(power(4,5))
