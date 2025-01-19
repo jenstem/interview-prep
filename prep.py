@@ -1,12 +1,15 @@
-# Recursion - Power
-
-# How to calculate power of a number using recursion?
+# Recursion - Greatest Common Divisor of 2 numbers
 
 
-def power(base, exp):
-    assert int(exp) == exp, 'The exponent must be an integer number only'
-    if exp == 0:
-        return 1
-    return base * power(base, exp-1)
+def gcd(a,b):
+    assert int(a) == a and int(b) == b, 'The numbers must be integers only'
+    if a < 0:
+        a = -1 * a
+    if b < 0:
+        b = -1 * b
+    if b == 0:
+        return a
+    else:
+        return gcd(b, a%b)
 
-print(power(4,5))
+print(gcd(48,-18))
