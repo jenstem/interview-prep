@@ -1,15 +1,11 @@
-# Recursion - Greatest Common Divisor of 2 numbers
+# Recursion - Decimal to Binary
 
 
-def gcd(a,b):
-    assert int(a) == a and int(b) == b, 'The numbers must be integers only'
-    if a < 0:
-        a = -1 * a
-    if b < 0:
-        b = -1 * b
-    if b == 0:
-        return a
+def decimalToBinary(n):
+    assert int(n) == n, 'Input must be a positive integer'
+    if n == 0:
+        return 0
     else:
-        return gcd(b, a%b)
+        return n % 2 + 10 * decimalToBinary(int(n/2))
 
-print(gcd(48,-18))
+print(decimalToBinary(12))
