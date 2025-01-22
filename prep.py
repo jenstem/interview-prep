@@ -1,11 +1,13 @@
-# Recursion - Decimal to Binary
+# Recursion - Power
 
+# Write a function called power which accepts a base and an exponent.
+# The function should return the power of the base to the exponent.
+# This function should mimic the functionality of Math.pow()
+# do not worry about negative bases and exponents.
 
-def decimalToBinary(n):
-    assert int(n) == n, 'Input must be a positive integer'
-    if n == 0:
-        return 0
-    else:
-        return n % 2 + 10 * decimalToBinary(int(n/2))
+def power(base, exponent):
+    if exponent == 0:
+        return 1
+    return base * power(base, exponent - 1)
 
-print(decimalToBinary(12))
+print(power(2, 4))
