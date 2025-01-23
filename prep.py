@@ -1,13 +1,13 @@
-# Recursion - Power
+# Recursion - Factorial
 
-# Write a function called power which accepts a base and an exponent.
-# The function should return the power of the base to the exponent.
-# This function should mimic the functionality of Math.pow()
-# do not worry about negative bases and exponents.
+# Write a function which accepts a number and returns the factorial of that number.
+# A factorial is the product of an integer and all the integers below it; e.g.
+# factorial four (4!) is equal to 4*3*2*1 = 24.
+# factorial of zero (0!) is always 1.
 
-def power(base, exponent):
-    if exponent == 0:
+def factorial(num):
+    if num == 0:
         return 1
-    return base * power(base, exponent - 1)
+    return num * factorial(num - 1)
 
-print(power(2, 4))
+print(factorial(7))
