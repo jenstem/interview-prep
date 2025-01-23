@@ -1,13 +1,11 @@
-# Recursion - Factorial
+# Recursion - productOfArray
 
-# Write a function which accepts a number and returns the factorial of that number.
-# A factorial is the product of an integer and all the integers below it; e.g.
-# factorial four (4!) is equal to 4*3*2*1 = 24.
-# factorial of zero (0!) is always 1.
+# Write a function called productOfArray
+# which takes in an array of numbers and returns the product of them all.
 
-def factorial(num):
-    if num == 0:
+def productOfArray(arr):
+    if len(arr) == 0:
         return 1
-    return num * factorial(num - 1)
+    return arr[0] * productOfArray(arr[1:])
 
-print(factorial(7))
+print(productOfArray([1,2,3,10]))
