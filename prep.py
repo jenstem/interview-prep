@@ -1,11 +1,11 @@
-# Recursion - productOfArray
+# Recursion - recursiveRange
 
-# Write a function called productOfArray
-# which takes in an array of numbers and returns the product of them all.
+# Write a function called recursiveRange which accepts a number
+# and adds up all the numbers from 0 to the number passed to the function
 
-def productOfArray(arr):
-    if len(arr) == 0:
-        return 1
-    return arr[0] * productOfArray(arr[1:])
+def recursiveRange(num):
+    if num == 0:
+        return 0
+    return num + recursiveRange(num - 1)
 
-print(productOfArray([1,2,3,10]))
+print(recursiveRange(10))
