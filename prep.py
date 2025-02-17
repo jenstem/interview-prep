@@ -1,19 +1,18 @@
-# Recursion - fib
+# Recursion - reverse
 
-# Write a recursive function called fib which accepts a number and returns the nth number in the Fibonacci sequence. Recall that the Fibonacci sequence is the sequence of whole numbers 0,1, 1, 2, 3, 5, 8, ... which starts with 0 and 1, and where every number thereafter is equal to the sum of the previous two numbers.
+# Write a recursive function called reverse which accepts a string and returns a new string in reverse.
 
 # Examples
 
-# fib(4) # 3
-# fib(10) # 55
-# fib(28) # 317811
-# fib(35) # 9227465
+# reverse('python') # 'nohtyp'
+# reverse('appmillers') # 'srellimppa'
 
-def fib(num):
-    assert num >= 0 and int(num) == num, 'The number must be a positive integer!'
-    if num in [0,1]:
-        return num
+def reverse(strng):
+    if len(strng) == 0:
+        return strng
     else:
-        return fib(num-1) + fib(num-2)
+        return strng[-1] + reverse(strng[:-1])
 
-print(fib(7))
+
+print(reverse('python'))
+print(reverse('appmillers'))
