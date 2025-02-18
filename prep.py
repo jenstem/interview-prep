@@ -1,18 +1,21 @@
-# Recursion - reverse
+# Recursion - isPalindrome
 
-# Write a recursive function called reverse which accepts a string and returns a new string in reverse.
+# Write a recursive function called isPalindrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). Otherwise it returns false.
 
 # Examples
 
-# reverse('python') # 'nohtyp'
-# reverse('appmillers') # 'srellimppa'
+# isPalindrome('awesome') # false
+# isPalindrome('foobar') # false
+# isPalindrome('tacocat') # true
+# isPalindrome('amanaplanacanalpanama') # true
+# isPalindrome('amanaplanacanalpandemonium') # false
 
-def reverse(strng):
-    if len(strng) == 0:
-        return strng
-    else:
-        return strng[-1] + reverse(strng[:-1])
-
-
-print(reverse('python'))
-print(reverse('appmillers'))
+def isPalindrome(strng):
+    n = len(strng)
+    if n == 1:
+        return True
+    if n == 2:
+        return strng[0] == strng[1]
+    if strng[0] == strng[-1]:
+        return isPalindrome(strng[1:-1])
+    return False
