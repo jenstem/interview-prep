@@ -1,21 +1,25 @@
-# Recursion - isPalindrome
+# Recursion - someRecursive
 
-# Write a recursive function called isPalindrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). Otherwise it returns false.
+# Write a recursive function called someRecursive which accepts an array and a callback. The function returns true if a single value in the array returns true when passed to the callback. Otherwise it returns false.
 
 # Examples
 
-# isPalindrome('awesome') # false
-# isPalindrome('foobar') # false
-# isPalindrome('tacocat') # true
-# isPalindrome('amanaplanacanalpanama') # true
-# isPalindrome('amanaplanacanalpandemonium') # false
+# someRecursive([1,2,3,4], isOdd) # true
+# someRecursive([4,6,8,9], isOdd) # true
+# someRecursive([4,6,8], isOdd) # false
 
-def isPalindrome(strng):
-    n = len(strng)
-    if n == 1:
+def isOdd(num):
+    if num % 2 != 0:
         return True
-    if n == 2:
-        return strng[0] == strng[1]
-    if strng[0] == strng[-1]:
-        return isPalindrome(strng[1:-1])
-    return False
+    else:
+        return False    
+
+def someRecursive(arr, cb):
+    if len(arr) == 0:
+        return False
+    if cb(arr[0]):
+        return True
+    return someRecursive(arr[1:], cb)
+
+print(someRecursive([1,2,3,4], isOdd))   
+print(someRecursive([4,6,8], isOdd)) 
