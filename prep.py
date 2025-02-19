@@ -1,15 +1,35 @@
-# Recursion - capitalizeWords
+# Recursion - stringifyNumbers
 
-# Write a recursive function called capitalizeWords. Given an array of words, return a new array containing each word capitalized.
+# Write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings. Recursion would be a great way to solve this!
 
 # Examples
 
-# words = ['i', 'am', 'learning', 'recursion']
-# capitalizeWords(words) # ['I', 'AM', 'LEARNING', 'RECURSION']
+# obj = {
+#   "num": 1,
+#   "test": [],
+#   "data": {
+#     "val": 4,
+#     "info": {
+#       "isRight": True,
+#       "random": 66
+#     }
+#   }
+# }
+ 
+# stringifyNumbers(obj)
+ 
+# {'num': '1', 
+#  'test': [], 
+#  'data': {'val': '4', 
+#           'info': {'isRight': True, 'random': '66'}
+#           }
+# }  
 
-def capitalizeWords(words):
-    result = []
-    if len(words) == 0:
-        return result
-    result.append(words[0].upper())
-    return result + capitalizeWords(words[1:])    
+def stringifyNumbers(obj):
+    newObj = obj
+    for key in newObj:
+        if type(newObj[key]) is int:
+            newObj[key] = str(newObj[key])
+        if type(newObj[key]) is dict:
+            newObj[key] = stringifyNumbers(newObj[key])
+    return newObj
