@@ -1,35 +1,32 @@
-# Recursion - stringifyNumbers
+# Recursion - collectStrings
 
-# Write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings. Recursion would be a great way to solve this!
+# Write a function called collectStrings which accepts an object and returns an array of all the values in the object that have a typeof string.
 
 # Examples
 
 # obj = {
-#   "num": 1,
-#   "test": [],
+#   "stuff": 'foo',
 #   "data": {
-#     "val": 4,
-#     "info": {
-#       "isRight": True,
-#       "random": 66
+#     "val": {
+#       "thing": {
+#         "info": 'bar',
+#         "moreInfo": {
+#           "evenMoreInfo": {
+#             "weMadeIt": 'baz'
+#           }
+#         }
+#       }
 #     }
 #   }
 # }
  
-# stringifyNumbers(obj)
- 
-# {'num': '1', 
-#  'test': [], 
-#  'data': {'val': '4', 
-#           'info': {'isRight': True, 'random': '66'}
-#           }
-# }  
+# collectStrings(obj) # ['foo', 'bar', 'baz']
 
-def stringifyNumbers(obj):
-    newObj = obj
-    for key in newObj:
-        if type(newObj[key]) is int:
-            newObj[key] = str(newObj[key])
-        if type(newObj[key]) is dict:
-            newObj[key] = stringifyNumbers(newObj[key])
-    return newObj
+def collectStrings(obj):
+    resultArr = []
+    for key in obj:
+        if type(obj[key]) is str:
+            resultArr.append(obj[key])
+        elif type(obj[key]) is dict:
+            resultArr.extend(collectStrings(obj[key]))
+    return resultArr
