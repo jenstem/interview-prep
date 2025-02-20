@@ -13,3 +13,21 @@ class TreeNode:
 
     def addChild(self, TreeNode):
         self.children.append(TreeNode)    
+
+tree = TreeNode('Drinks', []) 
+cold = TreeNode('Cold', [])
+hot = TreeNode('Hot', [])   
+tree.addChild(cold)
+tree.addChild(hot)
+print(tree)  
+
+tea = TreeNode('Tea', [])
+coffee = TreeNode('Coffee', []) 
+cola = TreeNode('Cola', [])
+fanta = TreeNode('Fanta', []) 
+
+hot.addChild(tea)
+hot.addChild(coffee)
+cold.addChild(cola) 
+cold.addChild(fanta)
+print(tree)
