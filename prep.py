@@ -8,6 +8,10 @@ class TreeNode:
 
 newBT = TreeNode("Drinks") 
 leftChild = TreeNode("Hot")
+tea = TreeNode("Tea")
+coffee = TreeNode("Coffee")
+leftChild.leftChild = tea
+leftChild.rightChild = coffee
 rightChild = TreeNode("Cold") 
 newBT.leftChild = leftChild
 newBT.rightChild = rightChild
@@ -26,6 +30,13 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftChild)
+    postOrderTraversal(rootNode.rightChild)
+    print(rootNode.data)
 
 preOrderTraversal(newBT)
 inOrderTraversal(newBT)
+postOrderTraversal(newBT)
