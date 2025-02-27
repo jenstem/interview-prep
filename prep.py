@@ -88,6 +88,21 @@ def insertNodeBT(rootNode, newNode):
                 root.value.rightChild = newNode
                 return "Successfully Inserted"        
 
-newNode = TreeNode("Cola")
-print(insertNodeBT(newBT, newNode))
-levelOrderTraversal(newBT)
+def getDeepestNode(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            if (root.value.leftChild is not None):
+                customQueue.enqueue(root.value.leftChild)
+            if (root.value.rightChild is not None):
+                customQueue.enqueue(root.value.rightChild)
+        deepestNode = root.value
+        return deepestNode
+
+deepestNode = getDeepestNode(newBT)
+print(deepestNode.data)
+
