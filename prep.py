@@ -146,5 +146,10 @@ def deleteNodeBT(rootNode, node):
                 customQueue.enqueue(root.value.rightChild)
         return "Failed to delete"
 
-deleteNodeBT(newBT, "Tea")
-levelOrderTraversal(newBT)        
+def  deleteBT(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The BT has been successfully deleted"     
+
+deleteBT(newBT)
