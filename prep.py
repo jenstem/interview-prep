@@ -56,12 +56,17 @@ class BinaryTree:
                 return "The node has been successfully deleted"
         return "The node is not found in the Binary Tree"
 
+    def deleteBT(self):
+        self.customList = None
+        return "The Binary Tree has been successfully deleted"
+
+
 newBT = BinaryTree(8)
 print(newBT.insertNode("Drinks"))
 print(newBT.insertNode("Hot"))
 print(newBT.insertNode("Cold"))
 print(newBT.searchNode("Tea"))
 print(newBT.searchNode("Coffee"))
-newBT.deleteNode("Tea")
+print(newBT.deleteBT())
 newBT.levelOrderTraversal(1)
       
