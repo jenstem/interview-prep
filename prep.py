@@ -1,29 +1,46 @@
 # Binary Search Tree
 
+import QueueLinkedList as queue
+
 class BSTNode:
     def __init__(self, data):
         self.data = data
         self.leftChild = None
         self.rightChild = None
 
-    def insertNode(rootNode, nodeValue):
-        if rootNode.data == None:
-            rootNode.data = nodeValue
-        elif nodeValue <= rootNode.data:
-            if rootNode.leftChild == None:
-                rootNode.leftChild = BSTNode(nodeValue)
-            else:
-                BSTNode.insertNode(rootNode.leftChild, nodeValue)
+def insertNode(rootNode, nodeValue):
+    if rootNode.data == None:
+        rootNode.data = nodeValue
+    elif nodeValue <= rootNode.data:
+        if rootNode.leftChild is None:
+            rootNode.leftChild = BSTNode(nodeValue)
         else:
-            if rootNode.rightChild == None:
-                rootNode.rightChild = BSTNode(nodeValue)
-            else:
-                BSTNode.insertNode(rootNode.rightChild, nodeValue)
-        return "The node has been successfully inserted"     
+            insertNode(rootNode.leftChild, nodeValue)
+    else:
+        if rootNode.rightChild is None:
+            rootNode.rightChild = BSTNode(nodeValue)
+        else:
+            insertNode(rootNode.rightChild, nodeValue)
+    return "The node has been successfully inserted"
+
+def preOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    print(rootNode.data)
+    preOrderTraversal(rootNode.leftChild)
+    preOrderTraversal(rootNode.rightChild)
+
 
 newBST = BSTNode(None)
-print(newBST.insertNode(newBST, 70))
-print(newBST.insertNode(newBST, 60))
+print(insertNode(newBST, 70))
+print(insertNode(newBST, 50))
+print(insertNode(newBST, 90))
+print(insertNode(newBST, 30))
+print(insertNode(newBST, 60))
+print(insertNode(newBST, 80))
+print(insertNode(newBST, 100))
+print(insertNode(newBST, 20))
+print(insertNode(newBST, 40))
 print(newBST.data)
 print(newBST.leftChild.data)
 print(newBST.rightChild.data)
