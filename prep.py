@@ -37,6 +37,13 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftChild)
+    postOrderTraversal(rootNode.rightChild)
+    print(rootNode.data)
+
 
 newBST = BSTNode(None)
 print(insertNode(newBST, 70))
@@ -48,6 +55,6 @@ print(insertNode(newBST, 80))
 print(insertNode(newBST, 100))
 print(insertNode(newBST, 20))
 print(insertNode(newBST, 40))
-inOrderTraversal(newBST)
+postOrderTraversal(newBST)
 
 
