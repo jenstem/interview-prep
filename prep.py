@@ -72,6 +72,12 @@ def searchNode(rootNode, nodeValue):
         else:
             searchNode(rootNode.rightChild, nodeValue)
 
+def minValue(bstNode):
+    current = bstNode
+    while current.leftChild is not None:
+        current = current.leftChild
+    return current.data
+
 
 newBST = BSTNode(None)
 print(insertNode(newBST, 70))
