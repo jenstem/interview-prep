@@ -44,6 +44,20 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
 
+def levelOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            root = customQueue.dequeue()
+            print(root.value.data)
+            if root.value.leftChild is not None:
+                customQueue.enqueue(root.value.leftChild)
+            if root.value.rightChild is not None:
+                customQueue.enqueue(root.value.rightChild)    
+
 
 newBST = BSTNode(None)
 print(insertNode(newBST, 70))
@@ -55,6 +69,6 @@ print(insertNode(newBST, 80))
 print(insertNode(newBST, 100))
 print(insertNode(newBST, 20))
 print(insertNode(newBST, 40))
-postOrderTraversal(newBST)
+levelOrderTraversal(newBST)
 
 
