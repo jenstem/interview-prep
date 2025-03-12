@@ -78,6 +78,27 @@ def minValue(bstNode):
         current = current.leftChild
     return current.data
 
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
+        return rootNode
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)   
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+        temp = minValue(rootNode.rightChild)
+        rootNode.data = temp
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp) 
+    return rootNode
+
 
 newBST = BSTNode(None)
 print(insertNode(newBST, 70))
@@ -89,6 +110,7 @@ print(insertNode(newBST, 80))
 print(insertNode(newBST, 100))
 print(insertNode(newBST, 20))
 print(insertNode(newBST, 40))
-searchNode(newBST, 60)
+deleteNode(newBST, 20)
+levelOrderTraversal(newBST)
 
 
