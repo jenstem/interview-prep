@@ -9,4 +9,12 @@ class AVLNode:
         self.rightChild = None
         self.height = 1
 
-newAVL = AVLNode()        
+    def preOrderTraversal(rootNode):
+        if not rootNode:
+            return
+        print(rootNode.data)
+        preOrderTraversal(rootNode.leftChild)
+        preOrderTraversal(rootNode.rightChild)    
+
+newAVL = AVLNode()
+newAVL.preOrderTraversal()        
