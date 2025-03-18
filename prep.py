@@ -1,4 +1,4 @@
-# AVL Trees
+# AVL Tree
 
 import QueueLinkedList as queue
 
@@ -14,7 +14,14 @@ class AVLNode:
             return
         print(rootNode.data)
         preOrderTraversal(rootNode.leftChild)
-        preOrderTraversal(rootNode.rightChild)    
+        preOrderTraversal(rootNode.rightChild)   
+
+    def inOrderTraversal(rootNode):
+        if not rootNode:
+            return
+        inOrderTraversal(rootNode.leftChild)
+        print(rootNode.data)
+        inOrderTraversal(rootNode.rightChild)     
 
 newAVL = AVLNode()
-newAVL.preOrderTraversal()        
+newAVL.OrderTraversal()        
