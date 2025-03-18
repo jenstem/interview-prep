@@ -21,7 +21,14 @@ class AVLNode:
             return
         inOrderTraversal(rootNode.leftChild)
         print(rootNode.data)
-        inOrderTraversal(rootNode.rightChild)     
+        inOrderTraversal(rootNode.rightChild)    
+
+    def postOrderTraversal(rootNode):
+        if not rootNode:
+            return
+        postOrderTraversal(rootNode.leftChild)
+        postOrderTraversal(rootNode.rightChild)
+        print(rootNode.data)     
 
 newAVL = AVLNode()
-newAVL.OrderTraversal()        
+newAVL.postOrderTraversal()        
