@@ -70,6 +70,14 @@ def rightRotate(disbalanceNode):
     disbalanceNode.height = 1 + max(getHeight(disbalanceNode.leftChild), getHeight(disbalanceNode.rightChild))
     newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
     return newRoot
+
+def leftRotate(disbalanceNode):
+    newRoot = disbalanceNode.rightChild
+    disbalanceNode.rightChild = disbalanceNode.rightChild.leftChild
+    newRoot.leftChild = disbalanceNode
+    disbalanceNode.height = 1 + max(getHeight(disbalanceNode.leftChild), getHeight(disbalanceNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    return newRoot
             
 
 newAVL = AVLNode()
