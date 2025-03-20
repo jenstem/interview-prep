@@ -61,7 +61,16 @@ def searchNode(rootNode, nodeValue):
 def getHeight(rootNode):
     if not rootNode:
         return 0
-    return rootNode.height            
+    return rootNode.height
+
+def rightRotate(disbalanceNode):
+    newRoot = disbalanceNode.leftChild
+    disbalanceNode.leftChild = disbalanceNode.leftChild.rightChild
+    newRoot.rightChild = disbalanceNode
+    disbalanceNode.height = 1 + max(getHeight(disbalanceNode.leftChild), getHeight(disbalanceNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    return newRoot
+            
 
 newAVL = AVLNode()
 newAVL.searchNode(10)
