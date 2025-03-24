@@ -141,8 +141,15 @@ def deleteNode(rootNode, nodeValue):
     if balance < -1 and getBalance(rootNode.rightChild) > 0:
         rootNode.rightChild = rightRotate(rootNode.rightChild)
         return leftRotate(rootNode)
+    return rootNode
+
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The AVL has been successfully deleted"
     
-    
+
 newAVL = AVLNode()
 newAVL.searchNode(10)
 newAVL.levelOrderTraversal()        
