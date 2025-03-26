@@ -166,6 +166,10 @@ def insertRightRight(rootNode, nodeValue):
     rootNode.rightChild = newNode
     return rootNode
 
+def insertRightLeft(rootNode, nodeValue):
+    newNode = AVLNode(nodeValue)
+    rootNode.rightChild.leftChild = newNode
+    return rootNode
     
 
 newAVL = AVLNode()
