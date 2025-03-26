@@ -148,6 +148,13 @@ def deleteAVL(rootNode):
     rootNode.leftChild = None
     rootNode.rightChild = None
     return "The AVL has been successfully deleted"
+
+def insertNodeLeftLeft(rootNode, nodeValue):
+    newNode = AVLNode(nodeValue)
+    if not rootNode:
+        return newNode
+    rootNode.leftChild = newNode
+    return rootNode
     
 
 newAVL = AVLNode()
