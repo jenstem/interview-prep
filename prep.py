@@ -6,4 +6,10 @@ class Heap:
         self.heapSize = 0
         self.maxSize = size + 1
 
+def peekofHeap(rootNode):
+    if not rootNode:
+        return
+    else:
+        return rootNode.customList[1]        
+
 newBinaryHeap = Heap(5)
