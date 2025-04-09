@@ -102,12 +102,15 @@ def extractNode(rootNode, heapType):
         heapifyTreeExtract(rootNode, 1, heapType)
         return extractedNode
 
+def deleteHeap(rootNode):
+    rootNode.customList = None
+    return "The heap has been deleted"
 
 newBinaryHeap = Heap(5)
 insertNode(newBinaryHeap, 4, "Max")
 insertNode(newBinaryHeap, 5, "Max")
 insertNode(newBinaryHeap, 2, "Max")
 insertNode(newBinaryHeap, 1, "Max")
-print(extractNode(newBinaryHeap, "Max"))
+deleteHeap(newBinaryHeap)
 
 
