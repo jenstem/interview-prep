@@ -91,11 +91,23 @@ def heapifyTreeExtract(rootNode, index, heapType):
                 rootNode.customList[swapChild] = temp
         heapifyTreeExtract(rootNode, swapChild, heapType)
 
+def extractNode(rootNode, heapType):
+    if rootNode.heapSize == 0:
+        return "The heap is empty"
+    else:
+        extractedNode = rootNode.customList[1]
+        rootNode.customList[1] = rootNode.customList[rootNode.heapSize]
+        rootNode.customList[rootNode.heapSize] = None
+        rootNode.heapSize -= 1
+        heapifyTreeExtract(rootNode, 1, heapType)
+        return extractedNode
+
 
 newBinaryHeap = Heap(5)
 insertNode(newBinaryHeap, 4, "Max")
 insertNode(newBinaryHeap, 5, "Max")
 insertNode(newBinaryHeap, 2, "Max")
 insertNode(newBinaryHeap, 1, "Max")
-levelOrderTraversal(newBinaryHeap)
-print(sizeofHeap(newBinaryHeap))
+print(extractNode(newBinaryHeap, "Max"))
+
+
