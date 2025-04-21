@@ -42,3 +42,6 @@ class OpenAddressing:
     def __init__(self, cellNumber):
         self.cellNumber = cellNumber
         self.table = [None] * cellNumber        
+
+    def hash_function(self, key):
+        return hash(key) % self.cellNumber  
