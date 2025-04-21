@@ -34,3 +34,11 @@ class DirectChaining:
     def search(self, key):
         index = self.hash_function(key)
         return key in self.table[index]    
+
+
+# Open Addressing
+
+class OpenAddressing:
+    def __init__(self, cellNumber):
+        self.cellNumber = cellNumber
+        self.table = [None] * cellNumber        
