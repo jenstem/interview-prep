@@ -23,3 +23,6 @@ class DirectChaining:
     def __init__(self, cellNumber):
         self.cellNumber = cellNumber
         self.table = [[] for _ in range(cellNumber)]
+
+    def hash_function(self, key):
+        return hash(key) % self.cellNumber
