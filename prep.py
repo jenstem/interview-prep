@@ -26,3 +26,7 @@ class DirectChaining:
 
     def hash_function(self, key):
         return hash(key) % self.cellNumber
+
+    def insert(self, key):
+        index = self.hash_function(key)
+        self.table[index].append(key)    
