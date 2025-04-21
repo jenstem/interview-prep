@@ -30,3 +30,7 @@ class DirectChaining:
     def insert(self, key):
         index = self.hash_function(key)
         self.table[index].append(key)    
+
+    def search(self, key):
+        index = self.hash_function(key)
+        return key in self.table[index]    
