@@ -16,3 +16,10 @@ def modASCII(string, cellNumber):
     return total % cellNumber
 
 modASCII("ABC", 24) 
+
+# Direct Chaining
+
+class DirectChaining:
+    def __init__(self, cellNumber):
+        self.cellNumber = cellNumber
+        self.table = [[] for _ in range(cellNumber)]
