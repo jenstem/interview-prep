@@ -45,3 +45,9 @@ class OpenAddressing:
 
     def hash_function(self, key):
         return hash(key) % self.cellNumber  
+
+    def insert(self, key):
+        index = self.hash_function(key)
+        while self.table[index] is not None:
+            index = (index + 1) % self.cellNumber
+        self.table[index] = key
