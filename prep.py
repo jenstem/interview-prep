@@ -2,16 +2,28 @@
 
 # Bubble Sort
 
-# Sort the People #2418
+# Relative Sort Array #1122
 
-# You are given an array of strings names, and an array heights that consists of distinct positive integers. Both arrays are of length n.
+# Given two arrays arr1 and arr2, the elements of arr2 are distinct, 
+# and all elements in arr2 are also in arr1.
 
-# For each index i, names[i] and heights[i] denote the name and height of the ith person.
-
-# Return names sorted in descending order by the people's heights.
+# Sort the elements of arr1 such that the relative ordering of items 
+# in arr1 are the same as in arr2. Elements that do not appear in arr2 
+# should be placed at the end of arr1 in ascending order.
 
 class Solution:
-    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        index = list(range(len(heights)))
-        index.sort(key=lambda i: -heights[i])
-        return [names[i] for i in index]
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        arr1_count = {num: 0 for num in arr1}
+        for num in arr1:
+            arr1_count[num] += 1
+
+        result = []
+        for num in arr2:
+            result.extend([num] * arr1_count[num])
+            arr1_count[num] = 0
+
+        remaining = []
+        for num in arr1_count:
+            remaining.extend([num] * arr1_count[num])
+        result.extend(sorted(remaining))
+        return result
