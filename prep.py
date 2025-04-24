@@ -1,61 +1,13 @@
-# Hashing
+# Sorting
 
-def mod(number, cellNumber):
-    return number % cellNumber
+# Bubble Sort
 
-mod(400, 24)    
-mod(700, 24)   
+def bubbleSort(customList):
+    for i in range(len(customList)-1):
+        for j in range(len(customList)-i-1):
+            if customList[j] > customList[j+1]:
+                customList[j], customList[j+1] = customList[j+1], customList[j]
+    print(customList)
 
-
-# ASCII function
-
-def modASCII(string, cellNumber):
-    total = 0
-    for i in string:
-        total += ord(i)
-    return total % cellNumber
-
-modASCII("ABC", 24) 
-
-# Direct Chaining
-
-class DirectChaining:
-    def __init__(self, cellNumber):
-        self.cellNumber = cellNumber
-        self.table = [[] for _ in range(cellNumber)]
-
-    def hash_function(self, key):
-        return hash(key) % self.cellNumber
-
-    def insert(self, key):
-        index = self.hash_function(key)
-        self.table[index].append(key)    
-
-    def search(self, key):
-        index = self.hash_function(key)
-        return key in self.table[index]    
-
-
-# Open Addressing
-
-class OpenAddressing:
-    def __init__(self, cellNumber):
-        self.cellNumber = cellNumber
-        self.table = [None] * cellNumber        
-
-    def hash_function(self, key):
-        return hash(key) % self.cellNumber  
-
-    def insert(self, key):
-        index = self.hash_function(key)
-        while self.table[index] is not None:
-            index = (index + 1) % self.cellNumber
-        self.table[index] = key
-
-    def search(self, key):
-        index = self.hash_function(key)
-        while self.table[index] is not None:
-            if self.table[index] == key:
-                return True  
-            index = (index + 1) % self.size
-        return False
+cList = [2,1,7,6,5,3,4,9,8]
+bubbleSort(cList)   
