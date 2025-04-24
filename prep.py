@@ -2,12 +2,16 @@
 
 # Bubble Sort
 
-def bubbleSort(customList):
-    for i in range(len(customList)-1):
-        for j in range(len(customList)-i-1):
-            if customList[j] > customList[j+1]:
-                customList[j], customList[j+1] = customList[j+1], customList[j]
-    print(customList)
+# Sort the People #2418
 
-cList = [2,1,7,6,5,3,4,9,8]
-bubbleSort(cList)   
+# You are given an array of strings names, and an array heights that consists of distinct positive integers. Both arrays are of length n.
+
+# For each index i, names[i] and heights[i] denote the name and height of the ith person.
+
+# Return names sorted in descending order by the people's heights.
+
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        index = list(range(len(heights)))
+        index.sort(key=lambda i: -heights[i])
+        return [names[i] for i in index]
