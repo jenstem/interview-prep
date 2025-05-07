@@ -1,10 +1,8 @@
 # Sorting
 
-# Insertion Sort with Floating Point Numbers
+# Bucket Sort
 
-# Write a Python function to perform insertion sort 
-# on a list of floating-point numbers and then verify the sorted order.
-
+import math
 
 def insertionSort(customList):
     for i in range(1, len(customList)):
@@ -14,8 +12,30 @@ def insertionSort(customList):
             customList[j + 1] = customList[j]
             j -= 1
         customList[j + 1] = key
-
     return customList
 
-cList = [2,1,7,6,5,3,4,9,8]
-print(insertionSort(cList))
+def bucketSort(customList):
+    numberOfBuckets = round(math.sqrt(len(customList)))   
+    maxValue = max(customList)
+    arr = []
+
+    for i in range(numberOfBuckets):
+        arr.append([])
+
+    for j in customList:
+        index_b = math.ceil(j * numberOfBuckets / maxValue)
+        arr[index_b - 1].append(j)
+
+    for i in range(numberOfBuckets):
+        arr[i] = insertionSort(arr[i])    
+  
+    k = 0
+    
+    for i in range(numberOfBuckets):
+        for j in range(len(arr[i])):
+            customList[k] = arr[i][j]
+            k += 1
+    return customList
+
+cList = [2,1,7,6,5,3,4,9,8] 
+print(bucketSort(cList))   
