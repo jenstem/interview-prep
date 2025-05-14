@@ -70,7 +70,14 @@ def merge(customList, l, m, r):
         j += 1
         k += 1
 
+def mergeSort(customList, l, r):
+    if l < r:
+        m = (l + (r - 1)) // 2
+        mergeSort(customList, l, m)
+        mergeSort(customList, m + 1, r)
+        merge(customList, l, m, r)
+    return customList
 
 
 cList = [2,1,7,6,5,3,4,9,8] 
-print(bucketSort(cList))     
+print(mergeSort(cList, 0, 8))     
