@@ -2,12 +2,13 @@
 
 # Merge Sort
 
-# Write a Python program to implement merge sort 
-# and print the sublists at each merge step.
+# Write a Python script to sort a list using merge sort and count 
+# the total number of comparisons made during the merge process.
 
 def mergeSort(customList):
     if len(customList) > 1:
         m = len(customList) // 2
+
         L = customList[:m]
         R = customList[m:]
 
@@ -16,7 +17,10 @@ def mergeSort(customList):
 
         i = j = k = 0
 
+        comparisons = 0
+
         while i < len(L) and j < len(R):
+            comparisons += 1
             if L[i] < R[j]:
                 customList[k] = L[i]
                 i += 1
@@ -33,12 +37,16 @@ def mergeSort(customList):
         while j < len(R):
             customList[k] = R[j]
             j += 1
-            k += 1    
+            k += 1 
+        return comparisons
+    return 0           
 
-        print(f"Merged: {customList}")            
+def sort_and_count(customList):
+    total_comparisons = mergeSort(customList)
+    return customList, total_comparisons        
 
 if __name__ == "__main__":
     customList = [2,1,7,6,5,3,4,9,8] 
-    print("Initial array:", customList)
-    mergeSort(customList)
-    print("Sorted array:", customList)
+    sortedList, total_comparisons = sort_and_count(customList)
+    print("Sorted array:", sortedList)
+    print("Total comparisons made:", total_comparisons)
