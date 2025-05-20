@@ -1,7 +1,5 @@
 # Sorting
 
-# Pivot Function
-
 def swap(my_list, index1, index2):
     my_list[index1], my_list[index2] = my_list[index2], my_list[index1]
 
@@ -17,8 +15,8 @@ def pivot(my_list, pivot_index, end_index):
 def quickSort_helper(my_list, left, right):
     if left < right:
         pivot_index = pivot(my_list, left, right)
-        quickSort_helper(my_list, left, pivot_index - 1)
-        quickSort_helper(my_list, pivot_index + 1, right)
+        quickSort_helper(my_list, left, pivot_index - 1) and print(pivot_index)
+        quickSort_helper(my_list, pivot_index + 1, right) and print(pivot_index)
     return my_list    
 
 def quickSort(my_list):
