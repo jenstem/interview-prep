@@ -21,8 +21,10 @@ def quickSort_helper(my_list, left, right):
         quickSort_helper(my_list, pivot_index + 1, right)
     return my_list    
 
+def quickSort(my_list):
+    return quickSort_helper(my_list, 0, len(my_list) - 1)
 
 
 my_list = [3,5,0,6,2,1,4]
-print(quickSort_helper(my_list, 0, 6))  
+print(quickSort(my_list))  
 print(my_list)
