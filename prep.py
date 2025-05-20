@@ -1,28 +1,26 @@
 # Sorting
 
-def swap(my_list, index1, index2):
-    my_list[index1], my_list[index2] = my_list[index2], my_list[index1]
+def quick_sort(arr, low, high, depth=0):
+    if low < high:
+        pi, current_depth = partition(arr, low, high, depth)
+        depth = max(depth, current_depth)
+        depth = quick_sort(arr, low, pi - 1, depth)
+        depth = quick_sort(arr, pi + 1, high, depth)
+    return depth
 
-def pivot(my_list, pivot_index, end_index):
-    swap_index = pivot_index
-    for i in range(pivot_index + 1, end_index + 1):
-        if my_list[i] < my_list[pivot_index]:
-            swap_index += 1
-            swap(my_list, swap_index, i)
-    swap(my_list, pivot_index, swap_index)
-    return swap_index
+def partition(arr, low, high, depth):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] < pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1, depth + 1
 
-def quickSort_helper(my_list, left, right):
-    if left < right:
-        pivot_index = pivot(my_list, left, right)
-        quickSort_helper(my_list, left, pivot_index - 1) and print(pivot_index)
-        quickSort_helper(my_list, pivot_index + 1, right) and print(pivot_index)
-    return my_list    
-
-def quickSort(my_list):
-    return quickSort_helper(my_list, 0, len(my_list) - 1)
-
-
-my_list = [3,5,0,6,2,1,4]
-print(quickSort(my_list))  
-print(my_list)
+if __name__ == "__main__":
+    arr = [10, 7, 8, 9, 1, 5]
+    n = len(arr)
+    recursion_depth = quick_sort(arr, 0, n - 1)
+    print("Sorted array:", arr)
+    print("Recursion depth:", recursion_depth)
