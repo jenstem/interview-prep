@@ -1,14 +1,18 @@
 # Sorting
 
-def quick_sort_case_insensitive(strings):
-    if len(strings) <= 1:
-        return strings
-    pivot = strings[len(strings) // 2].lower()
-    left = [x for x in strings if x.lower() < pivot]
-    middle = [x for x in strings if x.lower() == pivot]
-    right = [x for x in strings if x.lower() > pivot]
-    return quick_sort_case_insensitive(left) + middle + quick_sort_case_insensitive(right)
+# Heap Sort
 
-strings = ["banana", "Apple", "orange", "apple", "Banana"]
-sorted_strings = quick_sort_case_insensitive(strings)
-print(sorted_strings)
+def heapify(customList, n, i):
+    smallest = i
+    l = 2 * i + 1
+    r = 2 * i + 2
+
+    if l < n and customList[l] < customList[smallest]:
+        smallest = l
+
+    if r < n and customList[r] < customList[smallest]:
+        smallest = r     
+ 
+    if smallest != i:
+        customList[i], customList[smallest] = customList[smallest], customList[i]
+        heapify(customList, n, smallest)
