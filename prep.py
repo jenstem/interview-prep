@@ -28,6 +28,8 @@ def heapSort(customList):
         heapify(customList, i, 0)
     customList.reverse()    
 
-cList = [2,1,7,6,5,3,4,9,8]
-heapSort(cList)
-print(cList)
+if __name__ == "__main__":
+    data = [12, 11, 13, 5, 6, 7]
+    print("Original array:", data)
+    heapSort(data)
+    print("Sorted array:", data)
