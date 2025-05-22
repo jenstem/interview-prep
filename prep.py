@@ -9,5 +9,5 @@ def linearSearch(array, value):
             return True
     return print(f"(False, Not found)")
 
-data = [20, 40, 30, 50, 90]
-print(linearSearch(data, 90))
+data = ["A", 40, "C", True, 90]
+print(linearSearch(data, "D"))
