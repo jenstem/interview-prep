@@ -2,12 +2,15 @@
 
 # Linear Search
 
-def linearSearch(array, value):
-    for i in range(len(array)):
-        if array[i] == value:
-            print(f"(True, {i})")
-            return True
-    return print(f"(False, Not found)")
+def linearSearch(arr, target):
+    iterations = 0
+    for index, value in enumerate(arr):
+        iterations += 1
+        if value == target:
+            print(f"Iteration {iterations}: {value}")
+            return index
+    print(f"Target not found after {iterations} iterations.")
+    return -1        
 
 data = ["A", 40, "C", True, 90]
-print(linearSearch(data, "D"))
+print(linearSearch(data, 40))
