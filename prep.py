@@ -5,9 +5,9 @@
 def linearSearch(array, value):
     for i in range(len(array)):
         if array[i] == value:
-            print(f"Found {value} at index {i}")
-            return i
-    return -1
+            print(f"(True, {i})")
+            return True
+    return print(f"(False, Not found)")
 
 data = [20, 40, 30, 50, 90]
-print(linearSearch(data, 100))
+print(linearSearch(data, 90))
