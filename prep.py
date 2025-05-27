@@ -4,19 +4,22 @@
 
 import math
 
-def binarySearch(array, value, start=0, end=None):
-    if end is None:
-        end = len(array) - 1
-    if start > end:
-        return -1
-    middle = (start + end) // 2
-    if array[middle] == value:
-        return middle
-    elif value < array[middle]:
-        return binarySearch(array, value, start, middle - 1)
-    else:
-        return binarySearch(array, value, middle + 1, end)     
+def binarySearch(array, value, tolerance=1e-9):
+    start = 0
+    end = len(array) - 1
+    middle = math.floor((start + end) // 2)
+    
+    while start <= end:
+        if abs(array[middle] - value) <= tolerance:
+            return middle
+        elif value < array[middle]:
+            end = middle - 1
+        else:
+            start = middle + 1
+        middle = math.floor((start + end) // 2)
+    
+    return -1    
  
 
-custArray = [8, 9, 12, 15, 17, 19, 20, 21, 28]
-print(binarySearch(custArray, 12))
+custArray = [8.1, 9.1, 12.1, 15.1, 17.1, 19.1, 20.1, 21.1, 28.1]
+print(binarySearch(custArray, 12.1))
