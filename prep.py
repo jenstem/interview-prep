@@ -20,5 +20,5 @@ def binarySearch(array, value):
         return -1        
  
 
-custArray = [8, 9, 12, 15, 17, 19, 20, 21, 28]
-print(binarySearch(custArray, 30))
+custArray = ["A", "B", "D", "E", "J", "K", "L", "Y", "Z"]
+print(binarySearch(custArray, "J"))
