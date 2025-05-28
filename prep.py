@@ -1,25 +1,22 @@
-# Searching
+# Graph
 
-# Binary Search  
+# Dictionary Implementation
 
-import math
+class Graph:
+    def __init__(self, gdict=None):
+        if gdict is None:
+            gdict = {}
+        self.gdict = gdict    
 
-def binarySearch(array, value, tolerance=1e-9):
-    start = 0
-    end = len(array) - 1
-    middle = math.floor((start + end) // 2)
-    
-    while start <= end:
-        if abs(array[middle] - value) <= tolerance:
-            return middle
-        elif value < array[middle]:
-            end = middle - 1
-        else:
-            start = middle + 1
-        middle = math.floor((start + end) // 2)
-    
-    return -1    
- 
+    def addEdge(self, vertex, edge):
+        self.gdict[vertex].append(edge)
+   
+customDict = { "a" : ["b", "c"],
+               "b" : ["a", "d", "e"],
+               "c" : ["a", "e"],
+               "d" : ["b", "e", "f"],
+               "e" : ["c", "d", "f"],
+               "f" : ["d", "e"] }
 
-custArray = [8.1, 9.1, 12.1, 15.1, 17.1, 19.1, 20.1, 21.1, 28.1]
-print(binarySearch(custArray, 12.1))
+graph = Graph(customDict)
+print(graph.gdict)
