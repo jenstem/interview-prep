@@ -12,13 +12,10 @@ class Graph:
             return True 
         return False
 
+    def print_graph(self):
+        for vertex in self.adjacency_list:
+            print(vertex, ":", self.adjacency_list[vertex])
 
-customDict = { "a" : ["b", "c", "d"],
-               "b" : ["a", "e"],
-               "c" : ["a", "d"],
-               "d" : ["a", "c", "e"],
-               "e" : ["b", "d"]}
-
-graph = Graph(customDict)
-graph.addVertex("e", "c")
-print(graph.adjacency_list["e"])
+custom_graph = Graph()
+custom_graph.addVertex("A")
+custom_graph.print_graph()
