@@ -44,16 +44,15 @@ class Graph:
         return False
 
     def bfs(self, vertex):
-        visited = set()
-        visited.add(vertex)
+        visited = {vertex: 0}
         queue = deque([vertex])
         while queue:
             current_vertex = queue.popleft()
-            print(current_vertex)
             for adjacent_vertex in self.adjacency_list[current_vertex]:
                 if adjacent_vertex not in visited:
-                    visited.add(adjacent_vertex)
+                    visited[adjacent_vertex] = visited[current_vertex] + 1
                     queue.append(adjacent_vertex)
+        return visited            
 
     def dfs(self, vertex):
         visited = set()
@@ -80,5 +79,5 @@ custom_graph.addEdge("B", "E")
 custom_graph.addEdge("C", "D")
 custom_graph.addEdge("D", "E")
 custom_graph.print_graph()
-custom_graph.dfs("A")
+custom_graph.bfs("A")
 
