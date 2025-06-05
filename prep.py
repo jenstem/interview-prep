@@ -43,24 +43,17 @@ class Graph:
             return True
         return False
 
-    def bfs_with_level_count(self, vertex):
+    def bfs(self, vertex):
         visited = set()
         visited.add(vertex)
         queue = deque([vertex])
-        level_count = {}
-        level = 0
-
         while queue:
-            level_count[level] = len(queue)
-            for _ in range(len(queue)):
-                current_vertex = queue.popleft()
-                for adjacent_vertex in self.adjacency_list[current_vertex]:
-                    if adjacent_vertex not in visited:
-                        visited.add(adjacent_vertex)
-                        queue.append(adjacent_vertex)
-            level += 1
-        
-        print(level_count)     
+            current_vertex = queue.popleft()
+            print(current_vertex)
+            for adjacent_vertex in self.adjacency_list[current_vertex]:
+                if adjacent_vertex not in visited:
+                    visited.add(adjacent_vertex)
+                    queue.append(adjacent_vertex)   
 
     def dfs(self, vertex):
         visited = set()
@@ -87,4 +80,4 @@ custom_graph.addEdge("B", "E")
 custom_graph.addEdge("C", "D")
 custom_graph.addEdge("D", "E")
 custom_graph.print_graph()
-custom_graph.bfs_with_level_count("A")
+custom_graph.bfs("A")
