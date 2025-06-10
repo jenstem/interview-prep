@@ -5,8 +5,13 @@
 from collections import deque
 
 class Graph:
-    def __init__(self):
-        self.adjacency_list = {}   
+    def __init__(self, adjacency_matrix):
+        self.adjacency_list = {}
+        self.adjacency_matrix = adjacency_matrix
+        self.visited = [False] * len(adjacency_matrix)
+        self.discovery_time = [0] * len(adjacency_matrix)
+        self.finishing_time = [0] * len(adjacency_matrix)
+        self.time = 0   
 
     def addVertex(self, vertex):
         if vertex not in self.adjacency_list.keys():
@@ -56,28 +61,27 @@ class Graph:
                     queue.append(adjacent_vertex)   
 
     def dfs(self, vertex):
-        visited = set()
-        stack = [vertex]
-        while stack:
-            current_vertex = stack.pop()
-            if current_vertex not in visited:
-                print(current_vertex)
-                visited.add(current_vertex)
-            for adjacent_vertex in self.adjacency_list[current_vertex]:
-                if adjacent_vertex not in visited:
-                    stack.append(adjacent_vertex)            
+        self.visited[vertex] = True
+        self.time += 1
+        self.discovery_time[vertex] = self.time
+        print(f"Vertex {vertex} discovered at time {self.discovery_time[vertex]}") 
+        
+        for adjacent_vertex in range(len(self.adjacency_matrix[vertex])):
+            if self.adjacency_matrix[vertex][adjacent_vertex] == 1 and not self.visited[adjacent_vertex]:
+                self.dfs(adjacent_vertex)
+
+        self.time += 1
+        self.finishing_time[vertex] = self.time
+        print(f"Vertex {vertex} finished at time {self.finishing_time[vertex]}")        
 
 
-custom_graph = Graph()
-custom_graph.addVertex("A")
-custom_graph.addVertex("B")
-custom_graph.addVertex("C")
-custom_graph.addVertex("D")
-custom_graph.addVertex("E")
-custom_graph.addEdge("A", "B")
-custom_graph.addEdge("A", "C")
-custom_graph.addEdge("B", "E")
-custom_graph.addEdge("C", "D")
-custom_graph.addEdge("D", "E")
-custom_graph.print_graph()
-custom_graph.bfs("A")
+adjacency_matrix = [
+    [0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 1, 0],
+    [0, 0, 1, 0, 1],
+    [0, 1, 0, 1, 0]
+]
+
+custom_graph = Graph(adjacency_matrix)
+custom_graph.dfs(0)
