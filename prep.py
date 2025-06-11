@@ -65,11 +65,10 @@ class Graph:
         self.time += 1
         self.discovery_time[vertex] = self.time
         print(f"Vertex {vertex} discovered at time {self.discovery_time[vertex]}") 
-        
+
         for adjacent_vertex in range(len(self.adjacency_matrix[vertex])):
             if self.adjacency_matrix[vertex][adjacent_vertex] == 1 and not self.visited[adjacent_vertex]:
                 self.dfs(adjacent_vertex)
-
         self.time += 1
         self.finishing_time[vertex] = self.time
         print(f"Vertex {vertex} finished at time {self.finishing_time[vertex]}")        
