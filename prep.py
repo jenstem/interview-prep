@@ -57,15 +57,15 @@ class Graph:
 
     def dfs(self, vertex):
         visited = set()
-        stack = [vertex]
+        stack = [(vertex, [vertex])]
         while stack:
-            current_vertex = stack.pop()
+            current_vertex, path = stack.pop()
             if current_vertex not in visited:
-                print(current_vertex)
+                print("Path to", current_vertex, ":", path)
                 visited.add(current_vertex)
             for adjacent_vertex in self.adjacency_list[current_vertex]:
                 if adjacent_vertex not in visited:
-                    stack.append(adjacent_vertex)    
+                    stack.append((adjacent_vertex, path + [adjacent_vertex]))    
                  
 
 custom_graph = Graph()
